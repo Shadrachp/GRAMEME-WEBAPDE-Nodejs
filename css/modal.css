@@ -39,7 +39,8 @@
     color: #3c4045;
 }
 
-#editBtn, #deleteBtn{
+
+#shareBtn, #editBtn, .btn-del{
     width: 80px;
     margin: 0px;
     background-color: grey;
