@@ -81,8 +81,10 @@ $(document).ready(function () {
     
     function insertContent(post, guest){
         if(post.public && !member){ //if public post and guest user
-            $("#content-container").prepend(createContent(post));   
-            $("#btn-login").click();   
+            $("#content-container").prepend(createContent(post));
+            $("#content-container").click(function(){
+                $("#logInSubmit").toggle();
+            });   
         }
         else if(post.public && member){ //if public post and member (not-guest)
             $("#content-container").prepend(createContent(post)); 
