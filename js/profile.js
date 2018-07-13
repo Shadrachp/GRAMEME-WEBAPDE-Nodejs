@@ -123,7 +123,7 @@ $(document).ready(function () {
     function createModal(post){
         var tags = createTags(post.tags);
    
-              return '<div class="modal fade" id="'+post.modal_id+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="panel-heading text-center Logo-bold"><h3 class="panel-title">'+post.title+'</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="'+post.img_link+'"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>'+post.user+'</i></i></div><div><i>'+post.privacy+'</i></div><div><div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Share<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#">Shad Penano</a></li><li><a href="#">Plinky Gamara</a></li><li><a href="#">Graciel Nuncio</a></li></ul></div></div><div><button type="button" id="deleteBtn-'+id+'" class="btn">Delete</button></div><div><button type="button" id="editBtn" class="btn">Edit</button></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">'+post.description+'</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">'+tags+'</p></div></div></div></div></div>';
+              return '<div class="modal fade" id="'+post.modal_id+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="panel-heading text-center Logo-bold"><h3 class="panel-title">'+post.title+'</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="'+post.img_link+'"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>'+post.user+'</i></i></div><div><i>'+post.privacy+'</i></div><div><div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Share<span class="caret"></span></button><ul class="dropdown-menu"><li><a href="#">Shad Penano</a></li><li><a href="#">Plinky Gamara</a></li><li><a href="#">Graciel Nuncio</a></li></ul></div></div><div><button type="button" id="deleteBtn-'+post.modal_id+'" class="btn btn-del">Delete</button></div><div><button type="button" id="editBtn" class="btn">Edit</button></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">'+post.description+'</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">'+tags+'</p></div></div></div></div></div>';
     }
     
     
@@ -150,6 +150,9 @@ $(document).ready(function () {
             }else if(clicked.hasClass("btn-del")){
                 if(confirm("Are you sure you want to delete this meme?")){
                     deleteClicked(clicked.attr('id').substr(10));
+                    console.log(posts);
+                    removeAllContent();
+                    insertAllPosts(posts, member);
                 }
             }
                 
@@ -157,8 +160,12 @@ $(document).ready(function () {
     
         function deleteClicked(id){
             for(var k = 0; k <posts.length; k++){
-                if(posts[k].modal_id == id)
+                
+                if(new String(posts[k].modal_id) == id){
                     posts.splice[k, 1];
+                    console.log(posts);
+                    break;   
+                }
             }
         }   
     
