@@ -16,10 +16,18 @@ function fileValidation(){
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     document.getElementById('image-preview').innerHTML = '<img src="'+e.target.result+'"/>';
+                    console.log(reader.result);
                 };
                 reader.readAsDataURL(fileInput.files[0]);
+                
                  document.getElementById("myAlert").style.display = "none";
             }
         }
     }
+
+function upload(){
+    
+    if($("#title").val().trim()!=''&&$("#tags").val().trim()!='')
+        alert("Image successfully uploaded!");
+}
     

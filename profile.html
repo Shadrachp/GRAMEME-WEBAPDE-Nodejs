@@ -1,0 +1,159 @@
+<!doctype html>
+
+
+<html>
+    <head>
+        <title>Dat Boi (@BoiNumberOne_)</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel ="stylesheet" type="text/css" href="css/main.css">
+        <link rel ="stylesheet" type="text/css" href="css/fonts.css">
+        <link rel ="stylesheet" href="framework/bootstrap-4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link rel ="stylesheet" type="text/css" href="css/modal.css">
+        <script src="framework/jquery-3.3.1.js"></script>
+        <script src="framework/bootstrap-4/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/contents.js"></script>
+        <script type="text/javascript" src="js/profile.js"></script>
+        <script type="text/javascript" src="js/upload.js"></script>
+        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    </head>
+    <body>
+<!--        NavBar html-->
+<!--        <div class="container-fluid" style="padding: 0px;" id="NaviBar">-->
+        
+            
+            <header id="nav-header">
+                <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark">
+                    <a class="navbar-brand Logo-bold"  href="#">GraMeme</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="nav navbar-nav navbar-left">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="home.html">
+                            <i class="fas fa-home"></i>
+                            HoMemes  </a>
+    <!--                    <span class="sr-only">(current)</span>-->
+                      </li>
+                    </ul>
+                     <form id="search-form" class="form-inline my-2 my-lg-0 ml-auto">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search for memes" aria-label="Search" id="nav-search">
+                        <i id="search-submit" onclick="searchFilter" class="fa fa-search"></i>
+                    </form> 
+                    <ul class="nav navbar-nav navbar-right" id="nav-acc">
+                        <li class="nav-item">
+                        <a class="nav-link" href="profile.html">
+                            <i class="fas fa-user"></i>
+                            Dat Boi</a>
+                      </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout</a>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </nav>
+            </header>
+<!--        </div>-->
+<!--        End of NavBar html-->
+           <main class="container-fluid" id="main-content">
+               <!--Add post id with js, create array of obj-->
+                <div class="container" id="content-div">
+                    <div class="profile">
+                        <div class="profile-image">
+                            <img src="Assets/icon/home.png">
+                        </div>
+
+                        <div class="profile-user">
+                            <h1 class="profile-user-name">BoiNumberOne_</h1>
+                        </div>                        
+
+                        <div class="profile-bio">
+                            <p><span class="profile-real-name">Dat Boi</span> I liked memes before they were on instagram 📷</p>
+                        </div>
+                        
+                        <div class="profile-stats">
+                            <a class="profile-edit-btn" href="#form-group" data-toggle="collapse">Upload a Meme</a>
+                            
+                            <div id="form-group" class="collapse">
+                                <form id="upload-photo">
+                                    <div class="col-1">
+                                        <label>Title:
+                                            <input id="title" required/>
+                                        </label>
+                                    </div>
+                                    <div class="col-2">
+                                       <label>Tags:
+                                            <input id="tags" required/>
+                                        </label>
+                                    </div>
+                                    <div class="radio-group">
+                                        <label class="radio-inline">
+                                            <input id="public" type="radio" name="optradio" checked="checked" required>Public
+                                        </label>
+                                    </div>
+                                     <div class="radio-group">
+                                        <label class="radio-inline">
+                                            <input id="private" type="radio" name="optradio" required>Private
+                                        </label>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>
+                                            <input type="file" id="file" onchange="return fileValidation()" required/>
+                                        </label>
+                                    </div>
+                                    <div class="other">
+                                        <a id="image-preview"/>
+                                    </div>
+        
+                                
+                                    <input id="submit-btn" class="btn btn-info" type="submit" value="Submit Meme" onclick="upload()"/>  
+                                        
+                                    <div class="alert alert-danger" id="myAlert" role="alert">
+                                        Please upload file having extensions <strong>.jpeg/.jpg/.png/.tiff</strong> only.
+                                    </div>
+                                    
+                                    
+                                    
+                                </form>
+                                
+                            </div>
+			             </div>
+                    </div>
+                        
+                        <div class="row" id="content-container">
+                        <!-- USE JS TO GENERATE ALL WITH class="col-md-4"-->
+                        <!--Delete all content after applying js code including modals-->
+                        
+                        </div>
+                </div>    
+        </main>
+        <!-- Modal -->
+            <div id="uploaded" class="modal" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <footer class="bg-dark">
+  
+        </footer>
+    </body>
+</html>

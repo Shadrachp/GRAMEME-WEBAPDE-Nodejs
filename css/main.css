@@ -151,7 +151,7 @@ main img{
 .profile-image {
 	float: left;
     width: 200px;
-	display: flex;
+/*	display: flex;*/
 	justify-content: center;
 	align-items: center;
 	margin-right: 3rem;
@@ -165,21 +165,22 @@ main img{
 	width: 100%;
 }
 
+/*
 .profile-user,
 .profile-stats,
 .profile-bio {
 	float: left;
 	width: calc(66.666% - 2rem);
-/*    width: 200px;*/
 }
+*/
 
 .profile-user{
 	margin-top: 1.1rem;
 }
 
 .profile-user-name {
-	display: inline-block;
-/*	font-size: 3.2rem;*/
+/*	display: inline-block;*/
+	font-size: 3.2rem;
     font-size: 12pt;
     font-size: 3.2rem;
 	font-weight: 300;
@@ -187,7 +188,7 @@ main img{
 }
 
 .profile-edit-btn {
-	display: inline-block;
+/*	display: inline-block;*/
 	font-size: 1rem;
 	line-height: 1.8;
 	border: 0.1rem solid #dbdbdb;
@@ -216,6 +217,7 @@ main img{
 }
 
 /*Media Query*/
+/*
 @media screen and (max-width: 40rem) {
 	.profile {
 		display: flex;
@@ -258,6 +260,7 @@ main img{
 		flex-basis: 100%;
 	}
 }
+*/
 
 #upload-photo{
     width: 710px;
@@ -297,6 +300,11 @@ main img{
 }
 #myAlert{
     display: none;
+}
+
+.other{
+    max-height: 100%;
+    max-width: 100%;
 }
 
 /*

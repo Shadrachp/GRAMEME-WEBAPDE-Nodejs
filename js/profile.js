@@ -19,6 +19,7 @@ $(document).ready(function () {
         "img_link": "Assets/image/det-grunk.jpg",
         "description": "Spicy jalapeno bacon ipsum dolor amet venison prosciutto strip steak, chicken biltong capicola kevin swine turducken hamburger tenderloin sausage.",
         "public": true,
+        "privacy": "private",
         "modal_id": 1
     },sample_data2={
         "title":"No Good Memes",
@@ -28,6 +29,7 @@ $(document).ready(function () {
         "img_link": "Assets/image/NoPost.jpg",
         "description": "Spicy jalapeno bacon ipsum dolor amet venison prosciutto strip steak, chicken biltong capicola kevin swine turducken hamburger tenderloin sausage.",
         "public": true,
+        "privacy": "public",
         "modal_id": 2
     },sample_data3={
         "title":"No Posts",
@@ -37,6 +39,7 @@ $(document).ready(function () {
         "img_link": "Assets/image/noposts.jpg",
         "description": "Spicy jalapeno bacon ipsum dolor amet venison prosciutto strip steak, chicken biltong capicola kevin swine turducken hamburger tenderloin sausage.",
         "public": true,
+        "privacy": "public",
         "modal_id": 3
     },sample_data4={
         "title":"No Posts",
@@ -46,6 +49,7 @@ $(document).ready(function () {
         "img_link": "Assets/image/noposts.jpg",
         "description": "Spicy jalapeno bacon ipsum dolor amet venison prosciutto strip steak, chicken biltong capicola kevin swine turducken hamburger tenderloin sausage.",
         "public": true,
+        "privacy": "private",
         "modal_id": 4
     };
 
@@ -118,10 +122,8 @@ $(document).ready(function () {
     //creates modal for content    
     function createModal(post){
         var tags = createTags(post.tags);
-              return '<div class="modal fade" id="'+post.modal_id+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="panel-heading text-center Logo-bold"><h3 class="panel-title">'+post.title+'</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="'+post.img_link+'"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>'+post.user+'</i></i></div><div><i> public </i></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">'+post.description+'</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">'+tags+'</p></div></div></div></div></div>';
+              return '<div class="modal fade" id="'+post.modal_id+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="panel-heading text-center Logo-bold"><h3 class="panel-title">'+post.title+'</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="'+post.img_link+'"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>'+post.user+'</i></i></div><div><i>'+post.privacy+'</i></div><div class="dropdown"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Share</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">Shad Penano</a><a class="dropdown-item" href="#">Plinky Gamara</a><a class="dropdown-item" href="#">Graciel Nuncio</a></div></div><div><button type="button" id="deleteBtn" class="btn">Delete</button></div><div><button type="button" id="editBtn" class="btn">Edit</button></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">'+post.description+'</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">'+tags+'</p></div></div></div></div></div>';
     }
-    
-    
     
     //removes all the content of child
     function removeAllContent(){

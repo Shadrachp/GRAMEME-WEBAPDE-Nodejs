@@ -38,3 +38,13 @@
     cursor: pointer;
     color: #3c4045;
 }
+
+
+#shareBtn, #editBtn, .btn-del{
+    width: 80px;
+    margin: 0px;
+    background-color: grey;
+    color: white;
+    display: block;
+}
+
