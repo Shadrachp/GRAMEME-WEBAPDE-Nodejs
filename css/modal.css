@@ -1,0 +1,40 @@
+.modal-img{
+    max-height: 480px;
+    max-width: 640px;
+    margin: 0 auto;
+/*    640 × 480*/
+/*    960 x 720*/
+}
+
+.modal-dialog{
+    position: relative;
+    display: table; /* This is important */ 
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;   
+}
+
+.panel-title{
+    text-align: left;
+}
+
+.modal-header{
+    background-color: #282c31;
+    border: 0px;
+    border-radius: 0px;
+    color: white;
+}
+
+.modal-footer{
+    background-color: #282c31;
+    border: 0px;
+    color: white;
+    justify-content: space-between;
+}
+
+
+.meme-tag:hover{
+    cursor: pointer;
+    color: #3c4045;
+}
