@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var member = true;
+    var member =false;
     //var posts = list of all memes posted
     var posts = [],
         sample_data = {
@@ -82,6 +82,7 @@ $(document).ready(function () {
     function insertContent(post, guest){
         if(post.public && !member){ //if public post and guest user
             $("#content-container").prepend(createContent(post));   
+            $("#btn-login").click();   
         }
         else if(post.public && member){ //if public post and member (not-guest)
             $("#content-container").prepend(createContent(post)); 
