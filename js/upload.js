@@ -15,7 +15,7 @@ function fileValidation(){
                 
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    document.getElementById('image-preview').innerHTML = '<img src="'+e.target.result+'"/>';
+                    document.getElementById('image-preview').innerHTML = '<img class="up" src="'+e.target.result+'"/>';
                     console.log(reader.result);
                 };
                 reader.readAsDataURL(fileInput.files[0]);
