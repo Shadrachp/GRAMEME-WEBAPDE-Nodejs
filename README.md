@@ -11,3 +11,6 @@ This is the home page for the user. All public posts are located in this page.
 
 ##profile.html
 This is the page for the user. All photos uploaded by the user can be seen here.
+
+Username: Shad
+Password: Penano
