@@ -1,0 +1,34 @@
+{{#each posts}}
+    <div class="card card-body mb-2">
+        <h4>{{title}}</h4>
+        <p>{{details}}</p>
+        <p>{{date}}</p>
+        <a class="btn btn-dark btn-block mb-2"href="/ideas/edit/{{id}}">Edit</a>
+<!--DELETE POST-->
+        <form method="post" action="/ideas/{{id}}?_method=DELETE">
+        <input type="hidden" name="_method" value="DELETE">
+            <input class="btn btn-danger btn-block" type="submit" value="Delete">
+        </form>
+    </div>
+<!--
+sht need to rearrange this later (very high priority)
+same goes for the code below
+
+Fix
+- remove all " ' "
+- remove all js related code
+- rearrange code
+- think of a way to link the post to the modal (maybe replace those ids with handlebar style)
+
+<div class="modal fade" id="'+post.modal_id+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><div class="panel-heading text-center Logo-bold"><h3 class="panel-title">'+post.title+'</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="'+post.img_link+'"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>'+post.user+'</i></i></div><div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i> <i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">'+post.description+'</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">'+tags+'</p></div></div></div></div></div>'-->
+
+<!--'<div class="col-md-4"><div class="thumbnail"><a href="" data-toggle="modal" data-target="#'+post.modal_id+'"><img src="'+post.img_link+'"><div class="py-2"><p>'+post.title+'</p><div class="goodies"><div><i class="far fa-user"><i> '+post.user+'</i></i></div><div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i><i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i></div></div></div></a></div></div>'-->
+
+{{else}}
+<!--replace this code later from mp phase 1 (low priority)-->
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Start Uploading Memes!</h1>
+        <p class="lead">Fill your profile with full of memes</p>
+        <a class="btn btn-dark btn-lg" href="/posts">Upload a Meme</a>
+    </div>
+{{/each}}
