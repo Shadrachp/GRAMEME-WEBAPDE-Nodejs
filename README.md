@@ -1,34 +1,13 @@
-# Video-ideas-app-nodejs
-First attempt to create a Node.js app with express-handlebars and mongodb
+# GRAMEME-WEBAPDE
 
-# Features
-- Display data from db
-- Add data to db
-- Edit data from db
-- Delete data from db
-- Login and Sign up
-- Authentication
-- Database deployed to mLab
-- Deployed to Heroku https://polar-ravine-45276.herokuapp.com
+##WEBAPDE-MP1 Site Map
+This is a meme site entitled GraMeme. The website was developed as a requirement for WEBAPDE.
 
-# Modules
-1. body-parser
-2. express-handlebars
-3. mongoose
-4. nodemon
-5. method-override
-6. express-session
-7. connect-flash
-8. passport
-9. passport-local
+##index.html
+This is the landing page of all users and non-users of the website.
 
-# Steps
-1. Start mongodb service
-2. Navigate to dir through terminal/cmd  
-3. type in 'nodemon'
-4. open localhost:3000 using browser
+##home.html
+This is the home page for the user. All public posts are located in this page.
 
-# Upcoming Features
-- Login and Signup
-- Deploy database to mLab
-- Deploy to Heroku
+##profile.html
+This is the page for the user. All photos uploaded by the user can be seen here.
