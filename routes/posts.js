@@ -23,6 +23,11 @@ router.get('/', ensureAuthenticated, (req, res)=>{
     
 });
 
+//Renders the upload page
+router.get('/upload', ensureAuthenticated, (req, res)=>{
+    res.render('posts/upload');
+});
+
 //Edit Post
 router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
     Post.findOne({
