@@ -10,9 +10,9 @@ require('../models/User');
 const User = mongoose.model('users');
 
 //User Login
-router.get('/login', (req, res)=>{
-    res.render('users/login');
-});
+//router.get('/login', (req, res)=>{
+//    res.redirect('../');
+//});
 
 //User Register
 router.get('/register', (req, res)=>{
@@ -21,6 +21,10 @@ router.get('/register', (req, res)=>{
 
 //login post
 router.post('/login', (req, res, next)=>{
+    console.log('login: ' + req.body.rememberme);
+    if(req.body.rememberme){
+        req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000; //sets cookie to expire in 1week 
+    }
     passport.authenticate('local', {
         successRedirect: '/posts',
         failureRedirect: '../',
@@ -93,8 +97,11 @@ router.post('/register', (req, res)=>{
 // logout user
 router.get('/logout', ensureAuthenticated, (req, res) =>{
     req.logout();
-    req.flash('success_msg', 'You are now logged out!');
-    res.redirect('/');
+    req.session.destroy(()=>{
+        res.clearCookie('connect.sid');
+        res.redirect('/');
+    });
+//    res.redirect('/');
 });
 
 module.exports = router;
