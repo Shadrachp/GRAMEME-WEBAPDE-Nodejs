@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -48,9 +49,13 @@ app.use(session({
     secret: 'supersecret',
     resave: true,
     saveUninitialized: true,
-//    cookie: {secure: true}
+    cookie: {
+//        secure: true,
+        maxAge: 1 * 24 * 60 * 60 * 1000 //sets cookie for 1 day
+    }
 }));
 
+app.use(cookieParser());
 
 //Passport middleware
 app.use(passport.initialize());
@@ -96,6 +101,10 @@ app.use('/users', users);
 //for heroku add p.e.PORT
 const port = process.env.PORT || 3000;
 
+//
+//app.get('/*', function(req, res) {
+//    res.redirect('/');
+//});
 
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}`);
