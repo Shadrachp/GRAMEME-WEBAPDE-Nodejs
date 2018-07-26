@@ -56,6 +56,7 @@ app.use(session({
 }));
 
 app.use(cookieParser());
+
 //Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -70,7 +71,6 @@ app.use((req, res, next)=>{
     
     res.locals.error = req.flash('error');
     res.locals.user = req.user || null;
-    
     next();
 })
 
@@ -100,6 +100,7 @@ app.use('/posts', posts);
 app.use('/users', users);
 //for heroku add p.e.PORT
 const port = process.env.PORT || 3000;
+
 //
 //app.get('/*', function(req, res) {
 //    res.redirect('/');
