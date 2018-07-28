@@ -13,11 +13,13 @@ const Post = mongoose.model('posts');
 
 //Post index page remember to make profile as index
 router.get('/', ensureAuthenticated, (req, res)=>{
+    console.log(req.user.name);
     Post.find({user: req.user.id})
     .sort({date:'desc'})
     .then(posts =>{
         res.render('posts/index', {
-            posts:posts
+            posts:posts,
+            name: req.user.name
         });
     })
     
@@ -46,17 +48,17 @@ router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
 })
 
 //Process Form
-router.post('/', ensureAuthenticated, (req, res)=>{
+router.post('/upload', ensureAuthenticated, (req, res)=>{
     let errors = [];
     if(!req.body.title)
         errors.push({text:'Please add a title'});
     if(!req.body.details)
         errors.push({
-            text: 'Please add some details'
+            text: 'Please add some description'
         })
     
     if(errors.length>0){  
-        res.render('/posts',{ //this renders the index Make sure to edit handlebars file for showing the upload modal later (medium priority)
+        res.render('posts/upload',{ //this renders the index Make sure to edit handlebars file for showing the upload modal later (medium priority)
             errors: errors, //edit handlesbars for viewing errors later, remove {{errors}} from main layout then insert {{errors}} for every page or div that needs to display an error (low priority)
             title: req.body.title,
             details: req.body.details
@@ -65,7 +67,9 @@ router.post('/', ensureAuthenticated, (req, res)=>{
         const newPost ={
             title: req.body.title,
             details: req.body.details,
-            user: req.user.id
+            user: req.user.id,
+            private: getPrivacy(req.body.privacy),
+            name: req.user.name
         }
         new Post(newPost).save().then(post=>{
             req.flash('success_msg', 'Successfully added ' +
@@ -75,6 +79,11 @@ router.post('/', ensureAuthenticated, (req, res)=>{
     }
 })
 
+function getPrivacy(a){
+    if(a == '0')
+        return false;
+    return true;
+}
 
 //edit form process (editing data in db)
 router.put('/:id', ensureAuthenticated,(req, res)=>{

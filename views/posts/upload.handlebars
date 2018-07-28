@@ -1,6 +1,6 @@
 <div class="card card-body">
     <h3>Upload a Meme</h3>
-    <form action="/posts" method="post">
+    <form action="/posts/upload" method="post">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title">
@@ -8,6 +8,19 @@
         <div class="form-group">
             <label for="details">Description</label>
             <textarea class="form-control" name="details"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="details">Privacy</label>
+            <div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="privacy" id="inlineRadio1" value="0" checked>
+                  <label class="form-check-label" for="inlineRadio1">public</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="privacy" id="inlineRadio2" value="1">
+                  <label class="form-check-label" for="inlineRadio2">private</label>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="details">Add Tags</label>
