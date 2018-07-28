@@ -37,6 +37,8 @@
 - Upload memes
 - View memes
 - Edit memes
+- Delete memes
+- Search memes
 - Share memes
 - Cloud database
 - Deploy to heroku
