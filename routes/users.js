@@ -24,6 +24,7 @@ router.get('/register', (req, res)=>{
 router.post('/login', (req, res, next)=>{
 
     console.log('login: ' + req.body.rememberme);
+    req.body.email = req.body.email.toLowerCase();
     if(req.body.rememberme){
         req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000; //sets cookie to expire in 1week 
     }
@@ -52,6 +53,7 @@ router.post('/register', (req, res)=>{
     if(req.body.password != req.body.password2){
         errors.push({text: 'Password does not match'});
     }
+    
     if(errors.length > 0){
         res.render('users/register', {
             errors: errors,
@@ -100,13 +102,11 @@ router.post('/register', (req, res)=>{
 // logout user
 router.get('/logout', ensureAuthenticated, (req, res) =>{
     req.logout();
-
     req.session.destroy(()=>{
         res.clearCookie('connect.sid');
         res.redirect('/');
     });
 //    res.redirect('/');
-
 });
 
 module.exports = router;

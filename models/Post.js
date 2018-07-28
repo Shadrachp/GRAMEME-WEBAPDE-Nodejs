@@ -11,17 +11,30 @@ const PostSchema = new Schema({
         type: String,
         required: true
     }, 
-    user:{
+    user:{ //id of user who posted it
         type: String,
         required: true
     },
+    name:{
+        type: String,//name of user
+        required: true 
+    }
+    ,
     postImage:{
         type: String,
         required: false //temporarily false
     },
     tags:{
-      type:Array,
-      default: [] //temporarily false there should be at least one tag later
+      type: Array,
+      default: []
+    },
+    private: {
+        type: Boolean,
+        required: true
+    },
+    shared:{
+        type:Array,
+        default:[] //array of user id
     },
     date:{
         type: Date,  
