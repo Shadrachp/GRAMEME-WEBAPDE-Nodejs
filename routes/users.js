@@ -15,6 +15,7 @@ const User = mongoose.model('users');
 //});
 
 
+
 //User Register
 router.get('/register', (req, res)=>{
     res.render('users/register');

@@ -252,14 +252,19 @@ main img{
 }
 
 .up{
-    height: 100%;
-    width: 100%;
+    height: 50%;
+    width: 50%;
 }
 
 
 /*handlebars*/
 #register-hbs{
     margin-bottom: 100px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
 }
 
 /*
