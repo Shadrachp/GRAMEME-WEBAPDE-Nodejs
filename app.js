@@ -8,12 +8,14 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-
 const app = express();
 
 //Load routes
 const posts = require('./routes/posts');
 const users = require('./routes/users');
+
+//Load model
+const Post = mongoose.model('posts');
 
 //passport config
 require('./config/passport')(passport);
@@ -36,8 +38,9 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 //Body parser
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
 
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -84,10 +87,19 @@ app.use((req, res, next)=>{
 
 //Index Route
 app.get('/', (req, res)=>{
-    const title = 'Welcome';
-    res.render('index', {
-        title
-    });
+    const title = 'Kamusta';
+//    res.render('index', {
+//        title
+//    });
+    
+    Post.find({private: false})
+    .sort({date:'desc'})
+    .then(posts =>{
+        res.render('index', {
+            title, posts, 
+            user: req.user
+        });
+    })
 });
 
 //About Route

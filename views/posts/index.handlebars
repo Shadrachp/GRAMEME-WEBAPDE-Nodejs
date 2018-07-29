@@ -1,3 +1,6 @@
+{{#if posts}}
+<div class="row" id="content-container">
+{{/if}}
 {{#each posts}}
 <!--
     <div class="card card-body mb-2">
@@ -15,7 +18,7 @@ DELETE POST
 <div class="col-md-4">
     <div class="thumbnail">
         <a href="" data-toggle="modal" data-target="#a{{_id}}">
-        <img src="/Assets/image/det-grunk.jpg">
+        <img src="{{postImage}}">
         <div class="py-2">
             <p>{{title}}</p>
             <div class="goodies">
@@ -31,14 +34,6 @@ DELETE POST
     </div>
 </div>
 
-
-<div class="modal fade" id="a{{_id}}" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content"><div class="modal-header">
-            <div class="panel-heading text-center Logo-bold"><h3 class="panel-title">{{title}}</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="/Assets/image/det-grunk.jpg"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>{{name}}</i></i></div><div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i> <i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">{{details}}</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">#tag</p></div></div></div>
-    </div>
-</div>
-
 {{else}}
 <!--uses this jumbotron if page has no memes-->
     <div class="jumbotron text-center">
@@ -46,4 +41,17 @@ DELETE POST
         <p class="lead">Fill your profile full of memes</p>
         <a class="btn btn-dark btn-lg" href="/posts/upload">Upload a Meme</a>
     </div>
+{{/each}}
+{{#if posts}}
+</div>
+{{/if}}
+    
+    
+{{#each posts}}
+<div class="modal fade" id="a{{_id}}" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content"><div class="modal-header">
+            <div class="panel-heading text-center Logo-bold"><h3 class="panel-title">{{title}}</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="{{postImage}}"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>&nbsp{{name}}</i></i></div><div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i> <i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">{{details}}</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">#tag</p></div></div></div>
+    </div>
+</div>
 {{/each}}
