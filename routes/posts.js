@@ -99,7 +99,7 @@ router.get('/upload', ensureAuthenticated, (req, res)=>{
     res.render('posts/upload');
 });
 
-router.get('/image/:filename', ensureAuthenticated,(req, res)=>{
+router.get('/image/:filename', (req, res)=>{
     console.log(gfs);
     console.log(req.params.filename);
     

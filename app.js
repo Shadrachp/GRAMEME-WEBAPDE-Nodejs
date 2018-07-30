@@ -1,3 +1,4 @@
+require('sqreen');
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -30,6 +31,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect(db.mongoURI)
  .then(()=>console.log('MongoDB Connected...'))
  .catch(err => console.log(err));
+
+const conn = mongoose.connection;
 
 //Handlebars middleware
 app.engine('handlebars', exphbs({
@@ -100,10 +103,9 @@ app.use('/users', users);
 //for heroku add p.e.PORT
 const port = process.env.PORT || 3000;
 
-//
-//app.get('/*', function(req, res) {
-//    res.redirect('/');
-//});
+app.get('/*', function(req, res) {
+    res.redirect('/');
+});
 
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}`);

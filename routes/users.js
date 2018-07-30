@@ -54,6 +54,9 @@ router.post('/register', (req, res)=>{
     if(req.body.password != req.body.password2){
         errors.push({text: 'Password does not match'});
     }
+    if(!req.body.description){
+        errors.push({text: 'Please add a short description'});
+    }
     
     if(errors.length > 0){
         res.render('users/register', {
@@ -79,7 +82,8 @@ router.post('/register', (req, res)=>{
            const newUser = new User({
             name: req.body.name,
             email: req.body.email.toLowerCase(),
-            password: req.body.password
+            password: req.body.password,
+            description: req.body.description,
             }); 
             bcrypt.genSalt(10, (err, salt)=>{
             bcrypt.hash(newUser.password, salt, (err, hash)=>{
