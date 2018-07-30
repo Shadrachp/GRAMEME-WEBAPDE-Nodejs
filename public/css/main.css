@@ -146,6 +146,7 @@ main img{
 	content: "";
 	display: block;
 	clear: both;
+
 }
 
 .profile-image {
@@ -252,8 +253,8 @@ main img{
 }
 
 .up{
-    height: 50%;
-    width: 50%;
+    height: 80%;
+    width: 100%;
 }
 
 
@@ -266,6 +267,12 @@ main img{
     position: relative;
     overflow: hidden;
 }
+
+.size-sixty{
+    height: 60%;
+    width: 60%;
+}
+
 
 /*
 #content-body:nth-child(n+3) .col-md-4{

@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     
     description:{
         type: String,
-        required: false
+        required: true
     },
     
     date:{
