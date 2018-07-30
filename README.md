@@ -48,5 +48,5 @@
 - Delete memes
 - Search memes
 - Share memes
-- Cloud database (Cloud db is ready with mLab, will be used before deployment to heroku)
+- Cloud database (Cloud db is ready with mLab, will be used before deploying to heroku)
 - Deploy to heroku
