@@ -15,27 +15,33 @@
 5. posts/edit - the page to edit your memes
 
 # Dependencies
+- bcryptjs
+- body-parser
+- connect-flash
+- cookie-parser
 - express
 - express-session
 - express-handlebars
-- passport
-- passport-local
-- connect-flash
-- cookie-parser
-- bcryptjs
+- gridfs-stream
 - method-override
 - mongoose
-- nodemon (optional: for development purposes)
+- multer
+- multer-gridfs-storage
+- passport
+- passport-local
+- sqreen
+- nodemon (optional: for development purposes. use -global/-dev)
 
 # Features
 - Local database (NoSql)
 - Login
 - Register
 - Cookie
+- Upload memes
+- Accounted for injection attacks with sqreen incl server side scripting check
+- View memes
 
 # Upcoming features
-- Upload memes
-- View memes
 - Edit memes
 - Delete memes
 - Search memes
