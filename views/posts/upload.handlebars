@@ -1,13 +1,13 @@
 <div class="card card-body">
     <h3>Upload a Meme</h3>
-    <form action="/posts/upload" method="post">
+    <form action="/posts/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" required>
         </div>
         <div class="form-group">
-            <label for="details">Description</label>
-            <textarea class="form-control" name="details"></textarea>
+            <label for="description">Description</label>
+            <textarea class="form-control" name="details" required></textarea>
         </div>
         <div class="form-group">
             <label for="details">Privacy</label>
@@ -29,6 +29,14 @@
                 <option selected="" value="kapag duplicate nawawala">kapag duplicate nawawala</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-dark">Post</button>
+        <div class="custom-file mb-3"> 
+                <input type="file" id="file" onchange="return fileValidation()"
+                name="upImage" class="custom-file-input" required/>
+            <label for="upImage" class="custom-file-label">Choose Image</label>
+        </div>
+        <div class="other">
+            <a id="image-preview"/>
+        </div>
+        <button type="submit" class="btn btn-dark btn-block">Post</button>
     </form>
 </div> 

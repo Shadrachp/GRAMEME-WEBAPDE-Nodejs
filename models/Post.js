@@ -22,7 +22,7 @@ const PostSchema = new Schema({
     ,
     postImage:{
         type: String,
-        required: false //temporarily false
+        required: true //temporarily false
     },
     tags:{
       type: Array,

@@ -1,3 +1,23 @@
+<div class="profile mb-2">
+    <div class="profile-image">
+        <img src="Assets/icon/home.png"><!--change later-->
+    </div>
+
+    <div class="profile-user">
+        <h1 class="profile-user-name">{{user.name}}</h1>
+    </div>                        
+
+    <div class="profile-bio">
+        <p>
+            <span class="profile-real-name">{{user.details}}
+            </span> 
+            {{user.description}}
+        </p>
+    </div>
+</div>
+{{#if posts}}
+<div class="row" id="content-container">
+{{/if}}
 {{#each posts}}
 <!--
     <div class="card card-body mb-2">
@@ -12,30 +32,11 @@ DELETE POST
         </form>
     </div>
 -->
-<div class="col-md-4">
-    <div class="thumbnail">
+<div class="col-md-4 mb-2">
+    <div class="thumbnail img-responsive">
         <a href="" data-toggle="modal" data-target="#a{{_id}}">
-        <img src="/Assets/image/det-grunk.jpg">
-        <div class="py-2">
-            <p>{{title}}</p>
-            <div class="goodies">
-                <div>
-                <i class="far fa-user">
-                <i> {{name}}</i></i>
-                </div>
-                <div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i><i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i>
-                </div>
-            </div>
-        </div>
+        <img src="/posts/image/{{postImage}}">
         </a>
-    </div>
-</div>
-
-
-<div class="modal fade" id="a{{_id}}" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content"><div class="modal-header">
-            <div class="panel-heading text-center Logo-bold"><h3 class="panel-title">{{title}}</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="/Assets/image/det-grunk.jpg"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>{{name}}</i></i></div><div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i> <i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">{{details}}</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">#tag</p></div></div></div>
     </div>
 </div>
 
@@ -46,4 +47,17 @@ DELETE POST
         <p class="lead">Fill your profile full of memes</p>
         <a class="btn btn-dark btn-lg" href="/posts/upload">Upload a Meme</a>
     </div>
+{{/each}}
+{{#if posts}}
+</div>
+{{/if}}
+    
+    
+{{#each posts}}
+<div class="modal fade" id="a{{_id}}" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content"><div class="modal-header">
+            <div class="panel-heading text-center Logo-bold"><h3 class="panel-title">{{title}}</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="/posts/image/{{postImage}}"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>&nbsp{{name}}</i></i></div><div><i>public</i></div><div><div class="dropdown"><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Share<span class="caret"></span></button><ul class="dropdown-menu bg-dark text-center" ><li class="bg-dark"><a href="#" class="btn-dark btn-block">Shad Penano</a></li><li><a href="#">Plinky Gamara</a></li><li><a href="#">Graciel Nuncio</a></li></ul></div></div><div><button type="button" id="deleteBtn-'+post.modal_id+'" class="btn btn-danger">Delete</button></div><div><button type="button" id="editBtn" class="btn">Edit</button></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">{{details}}</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">#tag</p></div></div></div>
+    </div>
+</div>
 {{/each}}

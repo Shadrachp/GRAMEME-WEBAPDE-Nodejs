@@ -1,5 +1,30 @@
-<!---->
-
+{{#if posts}}
+    <div class="row" id="content-container">
+{{/if}}
+        
+{{#each posts}}
+        
+<div class="col-md-4">
+    <div class="thumbnail">
+        <a href="" data-toggle="modal" data-target="#a{{_id}}">
+        <img src="/posts/image/{{postImage}}">
+        <div class="py-2">
+            <p>{{title}}</p>
+            <div class="goodies">
+                <div>
+                <i class="far fa-user">
+                <i> {{name}}</i></i>
+                </div>
+                <div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i><i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+        
+{{else}}
+        
 <div class="jumbotron text-center">
     <img class="img-thumbnail" src="/Assets/image/NoPost.jpg">
     <h1 class="display-5">OH NO! THERE ARE NO MEMES :/</h1>
@@ -11,3 +36,24 @@
     <a class="btn btn-dark btn-lg" href="/users/register">Create Account</a>
     {{/if}}
 </div>
+        
+{{/each}}
+        
+{{#if posts}}
+    </div>
+{{/if}}
+
+
+{{#if user}}
+{{#each posts}}
+<div class="modal fade" id="a{{_id}}" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content"><div class="modal-header">
+            <div class="panel-heading text-center Logo-bold"><h3 class="panel-title">{{title}}</h3></div><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body bg-dark"><img class="img-responsive modal-img" src="/posts/image/{{postImage}}"></div><div class="modal-footer goodies"><div><i class="far fa-user"><i>&nbsp{{name}}</i></i></div><div><i class="far fa-thumbs-up"><i> 100 </i>&nbsp|&nbsp</i> <i class="far fa-thumbs-down"><i> 10 </i>&nbsp|&nbsp</i><i class="far fa-comment"> <i>1k+</i></i></div></div><div class="modal-footer"><div><p class="Logo-bold">MEMESCRIPTION:</p><p class="Text-reg">{{details}}</p><br/><p class="Logo-bold">TAGS:</p><p class="Text-light">#tag</p></div></div>
+        </div>
+    </div>
+</div>
+{{/each}}
+{{/if}}
+
+
