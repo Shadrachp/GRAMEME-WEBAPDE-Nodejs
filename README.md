@@ -19,6 +19,7 @@
 - body-parser
 - connect-flash
 - cookie-parser
+- crypto
 - express
 - express-session
 - express-handlebars
