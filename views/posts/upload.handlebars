@@ -29,15 +29,14 @@
                 <option selected="" value="kapag duplicate nawawala">kapag duplicate nawawala</option>
             </select>
         </div>
-        <div class="input-group"> 
-            <label>
+        <div class="custom-file mb-3"> 
                 <input type="file" id="file" onchange="return fileValidation()"
-                name="upImage" required/>
-            </label>
+                name="upImage" class="custom-file-input" required/>
+            <label for="upImage" class="custom-file-label">Choose Image</label>
         </div>
         <div class="other">
             <a id="image-preview"/>
         </div>
-        <button type="submit" class="btn btn-dark">Post</button>
+        <button type="submit" class="btn btn-dark btn-block">Post</button>
     </form>
 </div> 
