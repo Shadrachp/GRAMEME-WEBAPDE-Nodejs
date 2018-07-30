@@ -36,15 +36,17 @@
 - Local database (NoSql)
 - Login
 - Register
+- Proper auth.
 - Cookie
 - Upload memes
 - Accounted for injection attacks with sqreen incl server side scripting check
 - View memes
 
 # Upcoming features
+- Search by tags (Clickable tags)
 - Edit memes
 - Delete memes
 - Search memes
 - Share memes
-- Cloud database
+- Cloud database (Cloud db is ready with mLab, will be used before deployment to heroku)
 - Deploy to heroku
