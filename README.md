@@ -1,4 +1,5 @@
-# GRAMEME-WEBAPDE
+# GRAMEME-WEBAPDE 
+## HEROKU LINK: https://secure-forest-11470.herokuapp.com
 
 # WEBAPDE-MP2 Site Map
 - This is a meme site entitled GraMeme. This is a Webapp for viewing and uploading memes. 
@@ -42,12 +43,11 @@
 - Upload memes
 - Accounted for injection attacks with sqreen incl server side scripting check
 - View memes
-
+- mLab cloud db used for heroku deployment
+- heroku deployment https://secure-forest-11470.herokuapp.com
 # Upcoming features
 - Search by tags (Clickable tags)
 - Edit memes
 - Delete memes
 - Search memes
 - Share memes
-- Cloud database (Cloud db is ready with mLab, will be used before deploying to heroku)
-- Deploy to heroku
