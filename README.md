@@ -43,11 +43,13 @@
 - Upload memes
 - Accounted for injection attacks with sqreen incl server side scripting check
 - View memes
+- Edit memes
+- Delete memes
 - mLab cloud db used for heroku deployment
 - heroku deployment https://secure-forest-11470.herokuapp.com
 # Upcoming features
+- Add tags
 - Search by tags (Clickable tags)
-- Edit memes
-- Delete memes
+- Edit tags
 - Search memes
 - Share memes
