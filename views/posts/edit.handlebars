@@ -8,18 +8,18 @@
 
 <!--edited action-->
 <div class="card card-body">
-    <h3>Edit Video Idea</h3>
-    <form action="/ideas/{{idea.id}}?_method=PUT" method="post">
+    <h3>Edit Meme</h3>
+    <form action="/posts/{{post.id}}?_method=PUT" method="post">
         <input type="hidden" name="_method"
                value="PUT">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" value="{{idea.title}}">
+            <input type="text" class="form-control" name="title" value="{{post.title}}">
         </div>
         <div class="form-group">
             <label for="details">Details</label>
-            <textarea class="form-control" name="details">{{idea.details}}</textarea>
+            <textarea class="form-control" name="details">{{post.details}}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div> 

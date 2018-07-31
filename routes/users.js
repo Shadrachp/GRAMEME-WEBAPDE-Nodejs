@@ -14,8 +14,6 @@ const User = mongoose.model('users');
 //    res.redirect('../');
 //});
 
-
-
 //User Register
 router.get('/register', (req, res)=>{
     res.render('users/register');
@@ -24,7 +22,6 @@ router.get('/register', (req, res)=>{
 //login post
 router.post('/login', (req, res, next)=>{
 
-    console.log('login: ' + req.body.rememberme);
     req.body.email = req.body.email.toLowerCase();
     if(req.body.rememberme){
         req.session.cookie.maxAge = 7 * 24 * 60 * 60 * 1000; //sets cookie to expire afer a week 
@@ -36,6 +33,7 @@ router.post('/login', (req, res, next)=>{
         failureFlash: true
     })(req, res, next);
 });
+
 //register post
 router.post('/register', (req, res)=>{
     var errors = [];

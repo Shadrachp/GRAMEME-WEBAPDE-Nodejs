@@ -126,7 +126,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
             req.flash('error_msg', 'Not Authorized');
             res.redirect('/posts');
         }else{
-            res.render('posts/index', { //render profile
+            res.render('posts/edit', { //render profile
             post:post
         });
         }
@@ -196,7 +196,7 @@ function isPrivate(a){
 }
 
 //edit form process (editing data in db)
-router.put('/:id', ensureAuthenticated,(req, res)=>{
+router.put('/:id', ensureAuthenticated, (req, res)=>{
     Post.findOne({
        _id: req.params.id
     }).then(post =>{
@@ -212,12 +212,16 @@ router.put('/:id', ensureAuthenticated,(req, res)=>{
 
 //deleting a post
 router.delete('/:id', ensureAuthenticated, (req, res)=>{
-        Post.remove({
-            _id: req.params.id
-        }).then(()=>{
-            req.flash('success_msg', 'Meme successfully deleted!');
-            res.redirect('/posts');
+    Post.findOne({_id: req.params.id}).then((post)=>{
+        gfs.remove({_id: post.postImage}).then(()=>{
+            Post.remove({
+                _id: req.params.id
+            }).then(()=>{
+                req.flash('success_msg', 'Meme successfully deleted!');
+                res.redirect('/posts');
+            });
         });
+    }); 
 });
 
 

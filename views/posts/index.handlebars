@@ -73,7 +73,7 @@ DELETE POST
                  </div>
                  <div>
                      <div class="dropdown">
-                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> 
+                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"> 
                              Share
                              <span class="caret"></span>
                          </button>
@@ -85,10 +85,14 @@ DELETE POST
                      </div>
                  </div>
                  <div>
-                     <button type="button" class="btn btn-danger">Delete</button>
+                    <form method="post" action="/posts/{{id}}?_method=DELETE">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input class="btn btn-info" type="submit" value="Delete">
+                    </form>
                  </div>
                  <div>
-                     <a href="/posts/edit/{{_id}}" type="button" id="editBtn" class="btn btn-dark">Edit</a></div>
+                        <a href="/posts/edit/{{_id}}" class="btn btn-info btn-block">&nbsp&nbspEdit&nbsp&nbsp</a>
+                </div>
                  </div>
                  <div class="modal-footer">
                      <div>
