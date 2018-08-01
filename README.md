@@ -46,7 +46,7 @@
 - Edit memes
 - Delete memes
 - mLab cloud db used for heroku deployment
-- heroku deployment https://secure-forest-11470.herokuapp.com
+- heroku deployment https://grameme.herokuapp.com
 # Upcoming features
 - Add tags
 - Search by tags (Clickable tags)
