@@ -53,3 +53,4 @@
 - Edit tags
 - Search memes
 - Share memes
+- view other user's profile
