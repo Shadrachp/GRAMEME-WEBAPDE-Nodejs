@@ -1,4 +1,4 @@
-//require('sqreen');
+require('sqreen');
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -32,8 +32,6 @@ mongoose.connect(db.mongoURI)
  .then(()=>console.log('MongoDB Connected...'))
  .catch(err => console.log(err));
 
-const conn = mongoose.connection;
-
 //Handlebars middleware
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
@@ -58,7 +56,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
 //        secure: true,
-        maxAge: 1 * 24 * 60 * 60 * 1000 //sets cookie for 1 day
+        maxAge:  24 * 60 * 60 * 1000 //sets cookie for 1 day
     }
 }));
 
@@ -77,7 +75,7 @@ app.use((req, res, next)=>{
     res.locals.error = req.flash('error');
     res.locals.user = req.user || null;
     next();
-})
+});
 
 //Index Route
 app.get('/', (req, res)=>{
