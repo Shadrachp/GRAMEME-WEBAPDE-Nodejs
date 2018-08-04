@@ -1,4 +1,4 @@
-require('sqreen');
+//require('sqreen');
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -95,6 +95,15 @@ app.get('/', (req, res)=>{
 //About Route
 app.get('/about', (req,res)=>{
     res.render('about');
+});
+
+app.post('/search/:search', (req, res)=>{
+    const search = req.params.search;
+    
+    Post.find({title: '/'+search+'/i'})
+    .sort({date: 'desc'}).then(posts =>{
+       res.render('index',{ title, posts, user: req.user})     
+    });
 });
 
 //User routes

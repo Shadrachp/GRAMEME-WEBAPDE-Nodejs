@@ -20,6 +20,13 @@
             <label for="details">Details</label>
             <textarea class="form-control" name="details">{{post.details}}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group">
+            <label for="details">Add Tags</label>
+            <select multiple data-role="tagsinput">
+                <option selected="" value="medyo buggy pa">medyo buggy pa</option>
+                <option selected="" value="kapag duplicate nawawala">kapag duplicate nawawala</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-dark">Save</button>
     </form>
 </div> 

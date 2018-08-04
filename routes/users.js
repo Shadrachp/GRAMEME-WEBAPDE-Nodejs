@@ -109,7 +109,6 @@ router.get('/logout', ensureAuthenticated, (req, res) =>{
         res.clearCookie('connect.sid');
         res.redirect('/');
     });
-//    res.redirect('/');
 });
 
 module.exports = router;

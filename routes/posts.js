@@ -173,7 +173,6 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 name: req.user.name,
                 postImage: req.file.filename
             }
-            console.log(newPost);
             new Post(newPost).save().then(post=>{
                 req.flash('success_msg', 'Successfully added ' +
                          post.title + '!');
@@ -194,6 +193,7 @@ function isPrivate(a){
         return true;
     return false;
 }
+
 
 //edit form process (editing data in db)
 router.put('/:id', ensureAuthenticated, (req, res)=>{
