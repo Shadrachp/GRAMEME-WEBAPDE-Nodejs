@@ -104,7 +104,7 @@ app.post('/search', (req, res)=>{
 
 
 function searchDB(req, res, search, title){
-    var rPosts = [];
+    let rPosts = [];
     Post.find({ title: {$regex: search, $options: "$i"}})
         .sort({date: 'desc'}).then(posts =>{
         rPosts = insertContent(rPosts, posts);
@@ -136,13 +136,14 @@ function insertContent(rPosts, posts) {
 function prevDuplicate(rPosts, b){
     let boo = false;
     for (let i = 0; i < rPosts.length && !boo; i++)
-        boo = isIn(rPosts.length, b);
+        boo = isIn(rPosts[i], b);
     return boo;
 }
 
 //part of prevDuplicate(param1, param2)
 function isIn(a, b){
-    return a.id === b.id;
+    console.log(a.id);
+    return a.id == b.id;
 }
 
 //User routes
