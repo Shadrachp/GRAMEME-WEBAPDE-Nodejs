@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8256753e-ca2c-4fc1-a90e-27032253399b" name="Default Changelist" comment="guest search function, refactor code later">
+    <list default="true" id="8256753e-ca2c-4fc1-a90e-27032253399b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,15 +34,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="handlebars" value="30" />
-          <entry key="js" value="1860" />
-          <entry key="txt" value="96" />
+          <entry key="js" value="1888" />
+          <entry key="txt" value="110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Handlebars/Mustache" value="30" />
-          <entry key="JavaScript" value="1860" />
-          <entry key="PLAIN_TEXT" value="96" />
+          <entry key="JavaScript" value="1888" />
+          <entry key="PLAIN_TEXT" value="110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -51,7 +50,7 @@
           <entry key="css" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="handlebars" value="4" />
-          <entry key="js" value="11" />
+          <entry key="js" value="12" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
@@ -60,14 +59,14 @@
           <entry key="CSS" value="1" />
           <entry key="Handlebars/Mustache" value="4" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="11" />
+          <entry key="JavaScript" value="12" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3360825">
+    <splitter split-orientation="horizontal" split-proportion="0.5917526">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -82,9 +81,16 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="130" column="34" selection-start-line="130" selection-start-column="34" selection-end-line="130" selection-end-column="34" />
+                <state relative-caret-position="316">
+                  <caret line="144" column="22" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="22" />
                 </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/models/Post.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-647" />
               </provider>
             </entry>
           </file>
@@ -133,8 +139,8 @@
         <option value="$PROJECT_DIR$/views/layouts/main.handlebars" />
         <option value="$PROJECT_DIR$/public/js/nav.js" />
         <option value="$PROJECT_DIR$/views/partials/_navbar.handlebars" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/posts.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -170,22 +176,6 @@
             <path>
               <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
               <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -230,7 +220,7 @@
       <workItem from="1533398693192" duration="34000" />
       <workItem from="1533398779104" duration="1257000" />
       <workItem from="1533400826547" duration="350000" />
-      <workItem from="1533448168428" duration="5605000" />
+      <workItem from="1533448168428" duration="6281000" />
     </task>
     <task id="LOCAL-00001" summary="Removed unused variable">
       <created>1533399438533</created>
@@ -260,17 +250,31 @@
       <option name="project" value="LOCAL" />
       <updated>1533449760468</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="guest search function, refactor code later">
+      <created>1533454697142</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1533454697142</updated>
+    </task>
+    <task id="LOCAL-00006" summary="sabaw">
+      <created>1533455362536</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1533455362536</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7246000" />
+    <option name="totallyTimeSpent" value="7922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22954726" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22954726" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -285,7 +289,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.32913166" />
+      <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.32913166" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -301,7 +305,8 @@
     <MESSAGE value="Removed unused variable" />
     <MESSAGE value="guest search (title)" />
     <MESSAGE value="guest search function, refactor code later" />
-    <option name="LAST_COMMIT_MESSAGE" value="guest search function, refactor code later" />
+    <MESSAGE value="sabaw" />
+    <option name="LAST_COMMIT_MESSAGE" value="sabaw" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/views/posts/add.handlebars" />
@@ -339,17 +344,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="130" column="34" selection-start-line="130" selection-start-column="34" selection-end-line="130" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/posts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="199" column="74" selection-start-line="199" selection-start-column="74" selection-end-line="199" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-647" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="144" column="22" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="22" />
         </state>
       </provider>
     </entry>

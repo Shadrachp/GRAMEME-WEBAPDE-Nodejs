@@ -142,7 +142,6 @@ function prevDuplicate(rPosts, b){
 
 //part of prevDuplicate(param1, param2)
 function isIn(a, b){
-    console.log(a.id);
     return a.id == b.id;
 }
 
