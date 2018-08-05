@@ -102,7 +102,7 @@ app.post('/search', (req, res)=>{
         searchDB(req, res, search, title);
 });
 
-
+//refactor search code later, add an attribute for Post Model
 function searchDB(req, res, search, title){
     let rPosts = [];
     Post.find({ title: {$regex: search, $options: "$i"}})
@@ -115,7 +115,7 @@ function searchDB(req, res, search, title){
                 .sort({date: 'desc'}).then(posts => {
                 rPosts = insertContent(rPosts, posts);
                 if(rPosts.length > 0)
-                    res.render('index', {title, posts: rPosts, user: req.user});
+                    res.render('index', {title, posts: rPosts, search, user: req.user});
                 else{
                     res.render('index', {title, user: req.user});
                 }
