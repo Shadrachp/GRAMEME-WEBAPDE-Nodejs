@@ -12,7 +12,7 @@
                             HoMemes  </a>
                       </li>
                     </ul>
-                     <form id="search-form" class="form-inline my-2 my-lg-0 ml-auto" action="{{#if profile}}/posts/{{else}} /search/{{/if}}" method="POST">
+                     <form id="search-form" class="form-inline my-2 my-lg-0 ml-auto" action="{{#if profile}}/posts/{{else}}/search{{/if}}" method="POST">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search for memes" aria-label="Search" id="nav-search" name="search"
                         value="{{search}}">
                         <i id="search-submit" onclick="searchFilter" class="fa fa-search"></i>

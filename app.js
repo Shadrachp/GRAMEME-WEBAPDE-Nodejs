@@ -95,7 +95,7 @@ app.get('/about', (req,res)=>{
     res.render('about');
 });
 
-app.post('/search/', (req, res)=>{
+app.post('/search', (req, res)=>{
     const search = req.body.search;
     Post.find({title: '/'+search+'/i'})
     .sort({date: 'desc'}).then(posts =>{
