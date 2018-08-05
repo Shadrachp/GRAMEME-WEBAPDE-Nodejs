@@ -12,7 +12,7 @@
                             HoMemes  </a>
                       </li>
                     </ul>
-                     <form id="search-form" class="form-inline my-2 my-lg-0 ml-auto" action="{{#if profile}}/posts/{{else}} /{{/if}}" method="POST">
+                     <form id="search-form" class="form-inline my-2 my-lg-0 ml-auto" action="{{#if profile}}/posts/{{else}} /search/{{/if}}" method="POST">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search for memes" aria-label="Search" id="nav-search" name="search"
                         value="{{search}}">
                         <i id="search-submit" onclick="searchFilter" class="fa fa-search"></i>
@@ -43,8 +43,8 @@
                             <form method="POST" action="/users/login" class="px-4 py-3">
                              {{!--> _errors--}}
                             <div class="form-group">
-                            <label for="logIn_username">Username</label>
-                            <input type="text" class="form-control" id="logIn_username" name="email" 
+                            <label for="logIn_username">Email</label>
+                            <input class="form-control" id="logIn_username" name="email"
                             type="email"
                             placeholder="Username" required>
                             </div>
