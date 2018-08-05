@@ -97,11 +97,53 @@ app.get('/about', (req,res)=>{
 
 app.post('/search', (req, res)=>{
     const search = req.body.search;
-    Post.find({title: '/'+search+'/i'})
-    .sort({date: 'desc'}).then(posts =>{
-       res.render('index',{ title, posts, user: req.user})     
-    });
+    const title = "Kamusta";
+    if(search.trim().length >0 )
+        searchDB(req, res, search, title);
 });
+
+
+function searchDB(req, res, search, title){
+    var rPosts = [];
+    Post.find({ title: {$regex: search, $options: "$i"}})
+        .sort({date: 'desc'}).then(posts =>{
+        rPosts = insertContent(rPosts, posts);
+        Post.find({ name: {$regex: search, $options: "$i"}})
+            .sort({date: 'desc'}).then(posts => {
+            rPosts = insertContent(rPosts, posts);
+            Post.find({ details: {$regex: search, $options: "$i"}})
+                .sort({date: 'desc'}).then(posts => {
+                rPosts = insertContent(rPosts, posts);
+                if(rPosts.length > 0)
+                    res.render('index', {title, posts: rPosts, user: req.user});
+                else{
+                    res.render('index', {title, user: req.user});
+                }
+            })
+        })
+    });
+}
+
+//prevents the insertion of duplicate content
+function insertContent(rPosts, posts) {
+    for (let i = 0; i < posts.length; i++)
+        if (!prevDuplicate(rPosts, posts))
+            rPosts.push(posts[i]);
+    return rPosts;
+}
+
+//checks if b is already in a
+function prevDuplicate(rPosts, b){
+    let boo = false;
+    for (let i = 0; i < rPosts.length && !boo; i++)
+        boo = isIn(rPosts.length, b);
+    return boo;
+}
+
+//part of prevDuplicate(param1, param2)
+function isIn(a, b){
+    return a.id === b.id;
+}
 
 //User routes
 app.use('/posts', posts);

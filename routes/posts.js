@@ -100,11 +100,7 @@ router.get('/upload', ensureAuthenticated, (req, res)=>{
 });
 
 router.get('/image/:filename', (req, res)=>{
-    console.log(gfs);
-    console.log(req.params.filename);
-    
     gfs.files.findOne({filename: req.params.filename}, (err, file)=>{
-        console.log(file);
         if(!file || file.length === 0){
             return res.status(404).json({
                 err: 'No Image exists'
@@ -122,7 +118,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
         _id: req.params.id
     })
     .then(post =>{
-        if(post.user != req.user.id){
+        if(post.user !== req.user.id){
             req.flash('error_msg', 'Not Authorized');
             res.redirect('/posts');
         }else{
@@ -131,7 +127,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
         });
         }
     });
-})
+});
 
 //Process Form Post req for uploading or post a meme
 router.post('/upload', ensureAuthenticated, (req, res)=>{
@@ -145,7 +141,6 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             if(!req.body.details)
                 errors.push({text: 'Please add some description'})
         } 
-        console.log(req.file);
         if(errors.length>0){
 //            if(!err){
 //for local storage uncomment this if we need to switch to local and previous comments connected to this
@@ -172,7 +167,7 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 private: isPrivate(req.body.privacy),
                 name: req.user.name,
                 postImage: req.file.filename
-            }
+            };
             new Post(newPost).save().then(post=>{
                 req.flash('success_msg', 'Successfully added ' +
                          post.title + '!');
@@ -180,7 +175,7 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             })
         }
     });
-})
+});
 
 //function imgUpload(req, res, tempdata, errors){
 //    
@@ -189,9 +184,7 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
 //checks if the uploaded post is private or not
 function isPrivate(a){
 //    console.log(a);
-    if(a == '1')
-        return true;
-    return false;
+    return a === '1';
 }
 
 
@@ -204,7 +197,7 @@ router.put('/:id', ensureAuthenticated, (req, res)=>{
         post.details = req.body.details;
         post.save()
         .then(post => {
-            req.flash('success_msg', 'Meme successfully edited!')
+            req.flash('success_msg', post.title +' successfully edited!');
             res.redirect('/posts')
         });
     });
