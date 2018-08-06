@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8256753e-ca2c-4fc1-a90e-27032253399b" name="Default Changelist" comment="">
+    <list default="true" id="8256753e-ca2c-4fc1-a90e-27032253399b" name="Default Changelist" comment="View user's profile and search (buggy if while searching in a user's profile)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/_navbar.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/_navbar.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/posts/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/index.handlebars" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,12 +23,14 @@
     <session id="-1848038666">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -33,101 +40,129 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="handlebars" value="30" />
-          <entry key="js" value="1888" />
-          <entry key="txt" value="110" />
+          <entry key="handlebars" value="341" />
+          <entry key="js" value="5762" />
+          <entry key="txt" value="238" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Handlebars/Mustache" value="30" />
-          <entry key="JavaScript" value="1888" />
-          <entry key="PLAIN_TEXT" value="110" />
+          <entry key="Handlebars/Mustache" value="341" />
+          <entry key="JavaScript" value="5762" />
+          <entry key="PLAIN_TEXT" value="238" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
           <entry key="gitignore" value="1" />
-          <entry key="handlebars" value="4" />
-          <entry key="js" value="12" />
+          <entry key="handlebars" value="16" />
+          <entry key="js" value="16" />
           <entry key="json" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="Handlebars/Mustache" value="4" />
+          <entry key="Handlebars/Mustache" value="16" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="12" />
+          <entry key="JavaScript" value="16" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5917526">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/js/nav.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret selection-end-line="4" selection-end-column="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="316">
-                  <caret line="144" column="22" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/models/Post.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-647" />
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/routes/posts.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="124">
-                  <caret line="199" column="74" selection-start-line="199" selection-start-column="74" selection-end-line="199" selection-end-column="74" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/partials/_navbar.handlebars">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="292">
-                  <caret line="28" selection-start-line="25" selection-end-line="28" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/posts/index.handlebars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="169" column="11" selection-start-line="169" selection-start-column="11" selection-end-line="169" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/posts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="97">
+              <caret line="234" column="47" selection-start-line="234" selection-start-column="47" selection-end-line="234" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.handlebars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1257">
+              <caret line="65" column="22" lean-forward="true" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/_navbar.handlebars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/posts/upload.handlebars">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/users.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1847" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>fontawe</find>
       <find>req.bo</find>
       <find>req.bod</find>
-      <find>search</find>
       <find>console</find>
       <find>console.log</find>
+      <find>sche</find>
+      <find>schema</find>
+      <find>msg</find>
+      <find>err</find>
+      <find>flash</find>
+      <find>error</find>
+      <find>sort</find>
+      <find>trim</find>
+      <find>no results</find>
+      <find>req.user</find>
+      <find>form</find>
+      <find>query</find>
+      <find>User</find>
+      <find>{{name}}</find>
+      <find>&lt;form</find>
+      <find>req.user.name</find>
+      <find>&lt;a</find>
+      <find>search</find>
+      <find>name</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,7 +173,10 @@
       <list>
         <option value="$PROJECT_DIR$/views/layouts/main.handlebars" />
         <option value="$PROJECT_DIR$/public/js/nav.js" />
+        <option value="$PROJECT_DIR$/models/Post.js" />
         <option value="$PROJECT_DIR$/views/partials/_navbar.handlebars" />
+        <option value="$PROJECT_DIR$/views/index.handlebars" />
+        <option value="$PROJECT_DIR$/views/posts/index.handlebars" />
         <option value="$PROJECT_DIR$/routes/posts.js" />
         <option value="$PROJECT_DIR$/app.js" />
       </list>
@@ -177,6 +215,34 @@
               <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
               <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GRAMEME-WEBAPDE-Nodejs" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="posts" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -185,6 +251,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="{{&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.8.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -220,7 +287,9 @@
       <workItem from="1533398693192" duration="34000" />
       <workItem from="1533398779104" duration="1257000" />
       <workItem from="1533400826547" duration="350000" />
-      <workItem from="1533448168428" duration="6281000" />
+      <workItem from="1533448168428" duration="6799000" />
+      <workItem from="1533532322687" duration="6605000" />
+      <workItem from="1533562283591" duration="4297000" />
     </task>
     <task id="LOCAL-00001" summary="Removed unused variable">
       <created>1533399438533</created>
@@ -264,22 +333,36 @@
       <option name="project" value="LOCAL" />
       <updated>1533455362536</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="sabaw">
+      <created>1533455393171</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1533455393171</updated>
+    </task>
+    <task id="LOCAL-00008" summary="sabaw">
+      <created>1533456240337</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1533456240337</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7922000" />
+    <option name="totallyTimeSpent" value="19342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22954726" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22954726" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32913166" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32913166" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -289,7 +372,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.32913166" />
+      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.32913166" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -306,7 +389,8 @@
     <MESSAGE value="guest search (title)" />
     <MESSAGE value="guest search function, refactor code later" />
     <MESSAGE value="sabaw" />
-    <option name="LAST_COMMIT_MESSAGE" value="sabaw" />
+    <MESSAGE value="View user's profile and search (buggy if while searching in a user's profile)" />
+    <option name="LAST_COMMIT_MESSAGE" value="View user's profile and search (buggy if while searching in a user's profile)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/views/posts/add.handlebars" />
@@ -317,18 +401,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/fontawesome-free-5.2.0-web/css/all.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/layouts/main.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Downloads/fontawesome-free-5.2.0-web/css/all.css" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/nav.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -337,29 +419,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/_navbar.handlebars">
+    <entry file="file://$PROJECT_DIR$/views/partials/_errors.handlebars">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/_msg.handlebars">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layouts/main.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="28" selection-start-line="25" selection-end-line="28" />
+        <state relative-caret-position="247">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/users/register.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-43" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/posts/upload.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1847" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1257">
+          <caret line="65" column="22" lean-forward="true" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="199" column="74" selection-start-line="199" selection-start-column="74" selection-end-line="199" selection-end-column="74" />
+        <state relative-caret-position="97">
+          <caret line="234" column="47" selection-start-line="234" selection-start-column="47" selection-end-line="234" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/Post.js">
+    <entry file="file://$PROJECT_DIR$/views/posts/index.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-647" />
+        <state relative-caret-position="138">
+          <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/_navbar.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="32" column="57" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="144" column="22" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="22" />
+        <state relative-caret-position="128">
+          <caret line="169" column="11" selection-start-line="169" selection-start-column="11" selection-end-line="169" selection-end-column="11" />
         </state>
       </provider>
     </entry>

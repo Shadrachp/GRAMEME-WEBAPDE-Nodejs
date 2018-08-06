@@ -4,14 +4,14 @@
     </div>
 
     <div class="profile-user">
-        <h1 class="profile-user-name">{{user.name}}</h1>
+        <h1 class="profile-user-name">{{name}}</h1>
     </div>                        
 
     <div class="profile-bio">
         <p>
-            <span class="profile-real-name">{{user.details}}
+            <span class="profile-real-name">
             </span> 
-            {{user.description}}
+            {{description}}
         </p>
     </div>
 </div>
@@ -19,19 +19,7 @@
 <div class="row" id="content-container">
 {{/if}}
 {{#each posts}}
-<!--
-    <div class="card card-body mb-2">
-        <h4>{{title}}</h4>
-        <p>{{details}}</p>
-        <p>{{date}}</p>
-        <a class="btn btn-dark btn-block mb-2"href="/ideas/edit/{{id}}">Edit</a>
-DELETE POST
-        <form method="post" action="/ideas/{{id}}?_method=DELETE">
-        <input type="hidden" name="_method" value="DELETE">
-            <input class="btn btn-danger btn-block" type="submit" value="Delete">
-        </form>
-    </div>
--->
+
 <div class="col-md-4 mb-2">
     <div class="thumbnail img-responsive">
         <a href="" data-toggle="modal" data-target="#a{{_id}}">
@@ -42,11 +30,13 @@ DELETE POST
 
 {{else}}
 <!--uses this jumbotron if page has no memes-->
+    {{#unless NoResult}}
     <div class="jumbotron text-center">
         <h1 class="display-3">Start Uploading Memes!</h1>
         <p class="lead">Fill your profile full of memes</p>
         <a class="btn btn-dark btn-lg" href="/posts/upload">Upload a Meme</a>
     </div>
+    {{/unless}}
 {{/each}}
 {{#if posts}}
 </div>
@@ -66,10 +56,16 @@ DELETE POST
             </div>
             <div class="modal-footer goodies">
                  <div>
-                     <i class="far fa-user"><i>&nbsp{{name}}</i></i>
+                     <a href="/posts/profile/{{user}}">
+                         <i class="far fa-user"><i>&nbsp{{name}}</i></i>
+                     </a>
                  </div>
                  <div>
-                     <i>public</i>
+                     {{#if private}}
+                         <i>private</i>
+                     {{else}}
+                        <i>public</i>
+                     {{/if}}
                  </div>
                  <div>
                      <div class="dropdown">

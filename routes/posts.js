@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
 const crypto = require('crypto');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
@@ -11,7 +10,10 @@ const {ensureAuthenticated} = require('../helpers/auth');
 
 //Load Schema model 'post'
 require('../models/Post');
+require('../models/User');
 const Post = mongoose.model('posts');
+const User = mongoose.model('users');
+
 
 //set conn
 
@@ -88,8 +90,9 @@ router.get('/', ensureAuthenticated, (req, res)=>{
     .sort({date:'desc'})
     .then(posts =>{
         res.render('posts/index', {
-            posts:posts,
-            name: req.user.name
+            posts:posts, profile: true,
+            name: req.user.name,
+            description: req.user.description
         });
     })
 });
@@ -99,13 +102,13 @@ router.get('/upload', ensureAuthenticated, (req, res)=>{
     res.render('posts/upload');
 });
 
+//link to view image
 router.get('/image/:filename', (req, res)=>{
     gfs.files.findOne({filename: req.params.filename}, (err, file)=>{
         if(!file || file.length === 0){
             return res.status(404).json({
                 err: 'No Image exists'
             });
-            //replace with readstream.pipe later for 404 image
         }
         const readstream = gfs.createReadStream(file.filename);
         readstream.pipe(res);
@@ -115,16 +118,45 @@ router.get('/image/:filename', (req, res)=>{
 //Edit Post
 router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
     Post.findOne({
-        _id: req.params.id
+        _id: req.params.id,
+        user: req.user.id
     })
     .then(post =>{
-        if(post.user !== req.user.id){
-            req.flash('error_msg', 'Not Authorized');
-            res.redirect('/posts');
+        if(post) {
+                res.render('posts/edit', { //render profile
+                    post: post
+                });
         }else{
-            res.render('posts/edit', { //render profile
-            post:post
-        });
+            req.flash('error_msg', 'Unauthorized access');
+            res.redirect('/posts');
+        }
+    });
+});
+
+//response to req view user profile
+router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
+    const id = req.params.id;
+    User.findOne({_id: id}).then( user => {//include the shared private post later
+        if (user.id === req.user.id) {
+            res.redirect('/posts');
+        } else{
+            Post.find({
+                user: id,
+                private: false
+            })
+                .sort({date: 'desc'})
+                .then(posts => {
+                    let NoResult = false;
+                    if (posts.length > 0)
+                        NoResult = true;
+                    res.render('posts/index', {
+                        posts,
+                        name: user.name,
+                        description: user.description,
+                        profile: true,
+                        NoResult,
+                    });
+                });
         }
     });
 });
@@ -166,7 +198,8 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 user: req.user.id,
                 private: isPrivate(req.body.privacy),
                 name: req.user.name,
-                postImage: req.file.filename
+                postImage: req.file.filename,
+                index: req.user.name+' '+req.body.title+' '+req.body.details,
             };
             new Post(newPost).save().then(post=>{
                 req.flash('success_msg', 'Successfully added ' +
@@ -177,9 +210,40 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
     });
 });
 
-//function imgUpload(req, res, tempdata, errors){
-//    
-//}
+router.post('/search', ensureAuthenticated, (req, res)=>{
+    let search = req.body.search.trim();
+    let profile = true;
+    if(search)
+        Post.find({user: req.user.id,
+                   index: {$regex: search, $options: "$i"}})
+            .sort({date:'desc'})
+            .then(posts =>{
+                if(posts.length > 0) {
+                    let msg = ' result';
+                    if(posts.length > 1)
+                        msg = msg + 's';
+
+                    res.render('posts/index', {
+                        posts: posts,
+                        name: req.user.name,
+                        profile,
+                        success_msg: posts.length + msg + " found for '" + search +"'",
+                    });
+                }else{
+                    const error = "No results found for '" + search +"'";
+                    req.flash('error_msg', error);
+                    res.render('posts/index', {
+                        error, profile,
+                        NoResult: true
+                    });
+                }
+            });
+    else{
+        const error = 'Search field is empty';
+        req.flash('error_msg', error);
+        res.redirect('/posts');
+    }
+});
 
 //checks if the uploaded post is private or not
 function isPrivate(a){
@@ -191,29 +255,40 @@ function isPrivate(a){
 //edit form process (editing data in db)
 router.put('/:id', ensureAuthenticated, (req, res)=>{
     Post.findOne({
-       _id: req.params.id
-    }).then(post =>{
+       _id: req.params.id,
+        user: req.user.id
+    }).then(post => {
+        if(post){
         post.title = req.body.title;
         post.details = req.body.details;
         post.save()
-        .then(post => {
-            req.flash('success_msg', post.title +' successfully edited!');
-            res.redirect('/posts')
-        });
+            .then(post => {
+                req.flash('success_msg', post.title + ' successfully edited!');
+                res.redirect('/posts')
+            });
+        }else{
+            req.flash('error_msg', 'Error editing meme!');
+            res.redirect('/posts');
+        }
     });
 });
 
 //deleting a post
 router.delete('/:id', ensureAuthenticated, (req, res)=>{
-    Post.findOne({_id: req.params.id}).then((post)=>{
-        gfs.remove({_id: post.postImage}).then(()=>{
-            Post.remove({
-                _id: req.params.id
-            }).then(()=>{
-                req.flash('success_msg', 'Meme successfully deleted!');
-                res.redirect('/posts');
+    Post.findOne({_id: req.params.id, user: req.user.id}).then((post)=>{
+        if(post) {
+            gfs.remove({_id: post.postImage}).then(() => {
+                Post.remove({
+                    _id: req.params.id
+                }).then(() => {
+                    req.flash('success_msg', 'Meme successfully deleted!');
+                    res.redirect('/posts');
+                });
             });
-        });
+        }else{
+            req.flash('error_msg', 'Error deleting meme!');
+            res.redirect('/posts');
+        }
     }); 
 });
 

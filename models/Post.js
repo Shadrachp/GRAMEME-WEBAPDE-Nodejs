@@ -36,6 +36,10 @@ const PostSchema = new Schema({
         type:Array,
         default:[] //array of user id
     },
+    index:{
+        type: String,
+        required: true
+    },
     date:{
         type: Date,  
         default: Date.now
