@@ -45,12 +45,13 @@
 - View memes
 - Edit memes
 - Delete memes
+- View other user's profile
+- Search memes (Buggy when using the search function inside a user's profile)
 - mLab cloud db used for heroku deployment
 - heroku deployment https://grameme.herokuapp.com
 # Upcoming features
 - Add tags
 - Search by tags (Clickable tags)
 - Edit tags
-- Search memes
 - Share memes
-- view other user's profile
+
