@@ -24,19 +24,19 @@
 </div>
         
 {{else}}
-        
-<div class="jumbotron text-center">
-    <img class="img-thumbnail" src="/Assets/image/NoPost.jpg">
-    <h1 class="display-5">OH NO! THERE ARE NO MEMES :/</h1>
-    {{#if user}}
-    <p class="lead">Upload your memes to fill this page full of memes</p>
-    <a class="btn btn-dark btn-lg" href="/">Upload a Meme</a>
-    {{else}}
-    <p class="lead">Create an account to start uploading your memes</p>
-    <a class="btn btn-dark btn-lg" href="/users/register">Create Account</a>
-    {{/if}}
-</div>
-        
+ {{#unless NoResult}}
+    <div class="jumbotron text-center">
+        <img class="img-thumbnail" src="/Assets/image/NoPost.jpg">
+        <h1 class="display-5">OH NO! THERE ARE NO MEMES :/</h1>
+        {{#if user}}
+        <p class="lead">Upload your memes to fill this page full of memes</p>
+        <a class="btn btn-dark btn-lg" href="/">Upload a Meme</a>
+        {{else}}
+        <p class="lead">Create an account to start uploading your memes</p>
+        <a class="btn btn-dark btn-lg" href="/users/register">Create Account</a>
+        {{/if}}
+    </div>
+ {{/unless}}
 {{/each}}
         
 {{#if posts}}
