@@ -11,8 +11,10 @@ const {ensureAuthenticated} = require('../helpers/auth');
 //Load Schema model 'post'
 require('../models/Post');
 require('../models/User');
+require('../models/Tag');
 const Post = mongoose.model('posts');
 const User = mongoose.model('users');
+const Tag = mongoose.model('tags');
 
 
 //set conn
@@ -205,9 +207,12 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             res.render('posts/upload',{ //this renders the index Make sure to edit handlebars file for showing the upload modal later (medium priority) /done
                 errors: errors, //edit handlesbars for viewing errors later, remove {{errors}} from main layout then insert {{errors}} for every page or div that needs to display an error (low priority) /done
                 title: req.body.title,
-                details: req.body.details
+                details: req.body.details                
             });
+            
         }else{
+            var tags = req.body.tags.split(",");
+            
             const newPost ={
                 title: req.body.title,
                 details: req.body.details,
@@ -215,14 +220,45 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 private: isPrivate(req.body.privacy),
                 name: req.user.name,
                 postImage: req.file.filename,
-                index: req.user.name+' '+req.body.title+' '+req.body.details,
+                tags : tags,
+                index: req.user.name+' '+req.body.title+' '+req.body.details + ' ' +req.body.tags
             };
-            new Post(newPost).save().then(post=>{
-                req.flash('success_msg', 'Successfully added ' +
-                         post.title + '!');
-                res.redirect('/posts');
-            })
-        }
+//            var i;
+//                for (i = 0; len = tags.length; i++) {
+//                    console.log(tags[i]);
+//                }
+//            new Post(newPost).save().then(post=>{
+//                req.flash('success_msg', 'Successfully added ' +
+//                         post.title + '!');
+//                res.redirect('/posts');
+//            })
+//            
+//           
+//            var i;
+//            for(i=0;i<tags.length;i++){
+//                console.log(tags[i]);
+//                
+//                Tag.find({name: tags[i]}).then(()=>{
+//                    console.log('cant find')
+//                },(err)=>{
+//                        const newTag ={
+//                            name: tags[i],
+//                            $push: {posts: '123'}
+//                        };
+//                        
+//                        new Tag(newTag).save().then(()=>{
+//                            console.log('success');
+//                        },(err)=>{
+//                            console.log(err);
+//                        })
+//                })
+//                  
+//
+//                }    
+//            }
+            
+            
+        
     });
 });
 
@@ -276,6 +312,7 @@ router.put('/:id', ensureAuthenticated, (req, res)=>{
         if(post){
         post.title = req.body.title;
         post.details = req.body.details;
+        post.tags = req.body.tags.split(",");
         post.save()
             .then(post => {
                 req.flash('success_msg', post.title + ' successfully edited!');
