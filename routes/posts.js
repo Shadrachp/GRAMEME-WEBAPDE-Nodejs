@@ -138,7 +138,22 @@ router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
     const id = req.params.id;
     User.findOne({_id: id}).then( user => {//include the shared private post later
         if (user.id === req.user.id) {
-            res.redirect('/posts');
+            Post.find({
+                user: id,
+            })
+                .sort({date: 'desc'})
+                .then(posts => {
+                    let NoResult = false;
+                    if (posts.length > 0)
+                        NoResult = true;
+                    res.render('posts/index', {
+                        posts,
+                        name: user.name,
+                        description: user.description,
+                        profile: true,
+                        NoResult,
+                    });
+                });
         } else{
             Post.find({
                 user: id,
