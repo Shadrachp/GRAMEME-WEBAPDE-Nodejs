@@ -189,9 +189,13 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             res.render('posts/upload',{ //this renders the index Make sure to edit handlebars file for showing the upload modal later (medium priority) /done
                 errors: errors, //edit handlesbars for viewing errors later, remove {{errors}} from main layout then insert {{errors}} for every page or div that needs to display an error (low priority) /done
                 title: req.body.title,
-                details: req.body.details
+                details: req.body.details                
             });
+            
         }else{
+//            var tags = req.body.tags.split(",");
+//            console.log(tags);
+            
             const newPost ={
                 title: req.body.title,
                 details: req.body.details,
@@ -199,7 +203,8 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 private: isPrivate(req.body.privacy),
                 name: req.user.name,
                 postImage: req.file.filename,
-                index: req.user.name+' '+req.body.title+' '+req.body.details,
+                tags : req.body.tags.split(","),
+                index: req.user.name+' '+req.body.title+' '+req.body.details + ' ' +req.body.tags
             };
             new Post(newPost).save().then(post=>{
                 req.flash('success_msg', 'Successfully added ' +
@@ -261,6 +266,7 @@ router.put('/:id', ensureAuthenticated, (req, res)=>{
         if(post){
         post.title = req.body.title;
         post.details = req.body.details;
+        post.tags = req.body.tags.split(",");
         post.save()
             .then(post => {
                 req.flash('success_msg', post.title + ' successfully edited!');
