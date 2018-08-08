@@ -11,8 +11,10 @@ const {ensureAuthenticated} = require('../helpers/auth');
 //Load Schema model 'post'
 require('../models/Post');
 require('../models/User');
+require('../models/Tag');
 const Post = mongoose.model('posts');
 const User = mongoose.model('users');
+const Tag = mongoose.model('tags');
 
 
 //set conn
@@ -193,8 +195,7 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             });
             
         }else{
-//            var tags = req.body.tags.split(",");
-//            console.log(tags);
+            var tags = req.body.tags.split(",");
             
             const newPost ={
                 title: req.body.title,
@@ -203,15 +204,45 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 private: isPrivate(req.body.privacy),
                 name: req.user.name,
                 postImage: req.file.filename,
-                tags : req.body.tags.split(","),
+                tags : tags,
                 index: req.user.name+' '+req.body.title+' '+req.body.details + ' ' +req.body.tags
             };
-            new Post(newPost).save().then(post=>{
-                req.flash('success_msg', 'Successfully added ' +
-                         post.title + '!');
-                res.redirect('/posts');
-            })
-        }
+//            var i;
+//                for (i = 0; len = tags.length; i++) {
+//                    console.log(tags[i]);
+//                }
+//            new Post(newPost).save().then(post=>{
+//                req.flash('success_msg', 'Successfully added ' +
+//                         post.title + '!');
+//                res.redirect('/posts');
+//            })
+//            
+//           
+//            var i;
+//            for(i=0;i<tags.length;i++){
+//                console.log(tags[i]);
+//                
+//                Tag.find({name: tags[i]}).then(()=>{
+//                    console.log('cant find')
+//                },(err)=>{
+//                        const newTag ={
+//                            name: tags[i],
+//                            $push: {posts: '123'}
+//                        };
+//                        
+//                        new Tag(newTag).save().then(()=>{
+//                            console.log('success');
+//                        },(err)=>{
+//                            console.log(err);
+//                        })
+//                })
+//                  
+//
+//                }    
+//            }
+            
+            
+        
     });
 });
 
