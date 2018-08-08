@@ -1,11 +1,17 @@
 <header id="nav-header">
      <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark">
-                   <a id="logo" href="/" style="font-family: 'Billabong';">GraMeme</a>
+                  <a class="navbar-brand Logo-bold"  href="/">GraMeme</a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                      
+                    <ul class="nav navbar-nav navbar-left">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-home"></i>
+                            HoMemes  </a>
+                      </li>
+                    </ul>
                      <form id="search-form" class="form-inline my-2 my-lg-0 ml-auto" action="{{#if profile}}/posts/search{{else}}/search{{/if}}" method="POST">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search for memes" aria-label="Search" id="nav-search" name="search"
                         value="{{search}}">
