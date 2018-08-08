@@ -146,7 +146,8 @@ router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
             })
                 .sort({date: 'desc'})
                 .then(posts => {
-                    let NoResult = false;
+                    let NoResult = false,
+                        Visitor = true;
                     if (posts.length > 0)
                         NoResult = true;
                     res.render('posts/index', {
@@ -154,7 +155,7 @@ router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
                         name: user.name,
                         description: user.description,
                         profile: true,
-                        NoResult,
+                        NoResult, Visitor
                     });
                 });
         }
@@ -231,7 +232,6 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
                     });
                 }else{
                     const error = "No results found for '" + search +"'";
-                    req.flash('error_msg', error);
                     res.render('posts/index', {
                         error, profile,
                         NoResult: true
