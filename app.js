@@ -144,7 +144,8 @@ function searchDB(req, res, search, title){
            }
            else{
                const error = "No results found for '" + search + "'";
-               res.render('index', {title, user: req.user, error});
+               res.render('index', {title, user: req.user, error,
+               NoResult: true});
            }
        });
 }
