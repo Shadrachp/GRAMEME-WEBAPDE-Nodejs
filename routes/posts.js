@@ -211,11 +211,11 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
 //                for (i = 0; len = tags.length; i++) {
 //                    console.log(tags[i]);
 //                }
-//            new Post(newPost).save().then(post=>{
-//                req.flash('success_msg', 'Successfully added ' +
-//                         post.title + '!');
-//                res.redirect('/posts');
-//            })
+            new Post(newPost).save().then(post=>{
+                req.flash('success_msg', 'Successfully added ' +
+                         post.title + '!');
+                res.redirect('/posts');
+            })
 //            
 //           
 //            var i;
