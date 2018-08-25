@@ -1,7 +1,7 @@
 # GRAMEME-WEBAPDE 
 ## Link: grameme.tk
 
-# WEBAPDE-MP2 Site Map
+# WEBAPDE-MP3 Site Map
 - This is a meme site entitled GraMeme. This is a Webapp for viewing and uploading memes. 
 - MVC is already applied as an architectural pattern
 
