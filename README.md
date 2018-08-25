@@ -15,6 +15,11 @@
 
 5. posts/edit - the page to edit your memes
 
+## TODO
+- [ ] Share a meme
+- [ ] AJAX
+- [ ] Controller
+
 ## Dependencies
 - bcryptjs
 - body-parser
@@ -52,8 +57,5 @@
 - Search memes (Buggy when using the search function inside a user's profile)
 - mLab cloud db used for heroku deployment
 - heroku deployment https://grameme.herokuapp.com
-## TODO
-- [ ] Share a meme
-- [ ] AJAX
-- [ ] Controller
+
 
