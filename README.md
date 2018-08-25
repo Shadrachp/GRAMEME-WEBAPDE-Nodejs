@@ -53,7 +53,7 @@
 - mLab cloud db used for heroku deployment
 - heroku deployment https://grameme.herokuapp.com
 ## TODO
-[] Share a meme
-[] AJAX
-[] Controller
+- [ ] Share a meme
+- [ ] AJAX
+- [ ] Controller
 
