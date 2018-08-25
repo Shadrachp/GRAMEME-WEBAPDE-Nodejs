@@ -15,7 +15,7 @@
 
 5. posts/edit - the page to edit your memes
 
-# Dependencies
+## Dependencies
 - bcryptjs
 - body-parser
 - connect-flash
@@ -34,7 +34,7 @@
 - sqreen
 - nodemon (optional: for development purposes. use -global/-dev)
 
-# Features
+## Features
 - Local database (NoSql)
 - Login
 - Register
@@ -45,13 +45,15 @@
 - View memes
 - Edit memes
 - Delete memes
+- Add tags
+- Edit tags
+- Search by tags (Clickable tags)
 - View other user's profile
 - Search memes (Buggy when using the search function inside a user's profile)
 - mLab cloud db used for heroku deployment
 - heroku deployment https://grameme.herokuapp.com
-# Upcoming features
-- Add tags
-- Search by tags (Clickable tags)
-- Edit tags
-- Share memes
+## TODO
+[] Share a meme
+[] AJAX
+[] Controller
 
