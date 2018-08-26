@@ -192,17 +192,7 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 errors.push({text: 'Please add some description'})
         } 
         if(errors.length>0){
-//            if(!err){
-//for local storage uncomment this if we need to switch to local and previous comments connected to this
-//                fs.unlink("./public/uploads/" + req.file.filename, (errr)=>{
-//                    if(errr){
-//                        console.log('Error deleting the uploaded file!')
-//                    }else{
-//                        console.log('File successfully deleted!')
-//                    }
-//                });
-//                console.log("1error: " + err);
-//            }
+
             
             res.render('posts/upload',{ //this renders the index Make sure to edit handlebars file for showing the upload modal later (medium priority) /done
                 errors: errors, //edit handlesbars for viewing errors later, remove {{errors}} from main layout then insert {{errors}} for every page or div that needs to display an error (low priority) /done
@@ -231,35 +221,9 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 req.flash('success_msg', 'Successfully added ' +
                          post.title + '!');
                 res.redirect('/posts');
-            })
-//            
-//           
-//            var i;
-//            for(i=0;i<tags.length;i++){
-//                console.log(tags[i]);
-//                
-//                Tag.find({name: tags[i]}).then(()=>{
-//                    console.log('cant find')
-//                },(err)=>{
-//                        const newTag ={
-//                            name: tags[i],
-//                            $push: {posts: '123'}
-//                        };
-//                        
-//                        new Tag(newTag).save().then(()=>{
-//                            console.log('success');
-//                        },(err)=>{
-//                            console.log(err);
-//                        })
-//                })
-//                  
-//
-//                }    
-//            }
-            
-            
-        
-    });
+            })  
+        };
+    })
 });
 
 router.post('/search', ensureAuthenticated, (req, res)=>{
