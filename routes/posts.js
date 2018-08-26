@@ -7,7 +7,9 @@ const crypto = require('crypto');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const {ensureAuthenticated} = require('../helpers/auth');
-const controller = require('../models/Post');
+const model = require('../models/Post');
+const usrModel = require('../models/User');
+
 //Load Schema model 'post'
 require('../models/Post');
 require('../models/User');
@@ -88,7 +90,13 @@ function validateType(file, cb){
 
 //Post index page remember to make profile as index
 router.get('/', ensureAuthenticated, (req, res)=>{
-    controller.getPosts(Post, req, res);
+    model.getPosts(req.user.id).then(posts =>{
+        res.render('posts/index', {
+            posts:posts, profile: true,
+            name: req.user.name,
+            description: req.user.description
+        });
+    });
 });
 
 //Renders the upload page
@@ -98,17 +106,51 @@ router.get('/upload', ensureAuthenticated, (req, res)=>{
 
 //link to view image
 router.get('/image/:filename', (req, res)=>{
-    controller.getImg(gfs, req, res);
+    model.getImg(req.params.filename).then(readstream=>{
+        if(readstream)
+            readstream.pipe(res);
+    }, (err)=>{
+        return res.status(404).json({
+            err
+        });
+    });
 });
 
 //Edit Post
 router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
-    controller.getEdit(Post, req, res);
+    model.getEdit(req.params.id, req.user.id).then(post =>{
+        if(post) {
+            res.render('posts/edit', { //render profile
+                post: post
+            });
+        }else{
+            req.flash('error_msg', 'Unauthorized access');
+            res.redirect('/posts');
+        }
+    });
 });
 
 //response to req view user profile
 router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
-    controller.profile(User, Post, req, res);
+    usrModel.findUser(req.params.id).then(user=>{
+        if (user.id === req.user.id) {
+            res.redirect('/posts');
+        } else{
+            model.profile(req.params.id).then(posts=>{
+                let NoResult = false;
+                if (posts.length > 0)
+                    NoResult = true;
+                res.render('posts/index', {
+                    posts,
+                    name: user.name,
+                    description: user.description,
+                    profile: true,
+                    NoResult,
+                });
+            });
+        }
+    });
+
 });
 
 //Process Form Post req for uploading or post a meme
@@ -131,16 +173,56 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             });
             
         }else {
-            controller.upload(Post, req ,res);
+            const tags = req.body.tags.split(",");
+            const newPost = {
+                title: req.body.title,
+                details: req.body.details,
+                user: req.user.id,
+                private: isPrivate(req.body.privacy),
+                name: req.user.name,
+                postImage: req.file.filename,
+                tags: tags,
+                index: req.user.name + ' ' + req.body.title + ' ' + req.body.details + ' ' + req.body.tags
+            };
+            model.upload(newPost).then( post=> {
+                req.flash('success_msg', 'Successfully added ' +
+                    post.title + '!');
+                res.redirect('/posts');
+            });
         }
     });
 });
+
+function isPrivate(a){
+//    console.log(a);
+    return a === '1';
+}
 
 router.post('/search', ensureAuthenticated, (req, res)=>{
     let search = req.body.search.trim();
     let profile = true;
     if(search)
-        controller.fSearch(Post, req, res, profile);
+        model.fSearch(req.user.id, search).then(posts=>{
+            if (posts.length > 0) {
+                let msg = ' result';
+                if (posts.length > 1)
+                    msg = msg + 's';
+
+                res.render('posts/index', {
+                    posts: posts,
+                    name: req.user.name,
+                    profile,
+                    success_msg: posts.length + msg + " found for '" + search + "'",
+                });
+            } else {
+                const error = "No results found for '" + search + "'";
+                req.flash('error_msg', error);
+                res.render('posts/index', {
+                    error, profile,
+                    NoResult: true
+                });
+            }
+        });
     else{
         const error = 'Search field is empty';
         req.flash('error_msg', error);
@@ -149,7 +231,29 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
 });
 
 router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
-    controller.searchTag(Post, req, res);
+    const tag = req.params.tag;
+    let profile = true;
+    model.searchTag(tag).then(posts=>{
+        console.log(posts);
+        if(posts.length > 0) {
+            let msg = ' result';
+            if(posts.length > 1)
+                msg = msg + 's';
+            res.render('posts/index', {
+                posts: posts,
+                name: req.user.name,
+                profile,
+                success_msg: posts.length + msg + " found for '" + tag +"'",
+            });
+        }else{
+            const error = "No results found for '" + tag +"'";
+            req.flash('error_msg', error);
+            res.render('posts/index', {
+                error, profile,
+                NoResult: true
+            });
+        }
+    });
 });
 //checks if the uploaded post is private or not
 
@@ -157,13 +261,41 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
 
 //edit form process (editing data in db)
 router.put('/:id', ensureAuthenticated, (req, res)=>{
-    controller.edit(Post, req, res);
+    model.edit(req.params.id, req.user.id).then(post =>{
+        if(post){
+            post.title = req.body.title;
+            post.details = req.body.details;
+            post.tags = req.body.tags.split(",");
+            post.index = req.user.name + ' ' + req.body.title + ' ' + req.body.details + ' ' + req.body.tags;
+            post.save()
+                .then(post => {
+                    req.flash('success_msg', post.title + ' successfully edited!');
+                    res.redirect('/posts')
+                });
+        }else{
+            req.flash('error_msg', 'Error editing meme!');
+            res.redirect('/posts');
+        }
+    });
 });
 
 //deleting a post
 router.delete('/:id', ensureAuthenticated, (req, res)=>{
-   controller.pDelete(Post, gfs, req, res)
+   model.pDelete(req.params.id, req.user.id).then(post =>{
+       if(post) {
+           model.gfsDel(post.postImage).then(()=>{
+               model.pRemove(req.params.id).then(()=>{
+                   req.flash('success_msg', 'Meme successfully deleted!');
+                   res.redirect('/posts');
+               });
+           });
+       }else{
+           req.flash('error_msg', 'Error deleting meme!');
+           res.redirect('/posts');
+       }
+   });
 });
 
-
+// const id = req.params.id;
+// uModel.findUser(id).then(user => {});
 module.exports = router;

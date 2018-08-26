@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-const controller= require('./models/Post');
+const model = require('./models/Post');
 const app = express();
 
 //Load routes
@@ -77,7 +77,13 @@ app.use((req, res, next)=>{
 
 //Index Route
 app.get('/', (req, res)=>{
-    controller.pubPosts(Post, req, res);
+    const title = 'Kamusta';
+    model.pubPosts(/*limit to 15 for ajax*/).then(posts =>{
+        res.render('index', {
+            title, posts,
+            user: req.user
+        });
+    });
 });
 
 //About Route
@@ -89,7 +95,19 @@ app.post('/search', (req, res)=>{
     const search = req.body.search.trim();
     const title = "Kamusta"; //ignore
     if(search.length >0 )
-        controller.pSearch(Post, req, res, search, title);
+        model.pSearch(search).then(posts=>{
+            if(posts.length > 0){
+                let result = ' result';
+                if(posts.length > 1)
+                    result = result +'s';
+                const msg = posts.length + result + " found for '" + search + "'";
+                res.render('index', {title, posts, search, user: req.user, success_msg: msg});
+            }
+            else{
+                const error = "No results found for '" + search + "'";
+                res.render('index', {title, user: req.user, error});
+            }
+        });
     else{
         const error = 'Search field is empty';
         req.flash('error_msg', error);

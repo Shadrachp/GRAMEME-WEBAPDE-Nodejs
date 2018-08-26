@@ -30,47 +30,20 @@ const UserSchema = new Schema({
     }
 });
 
-// const controls = {
-//     reg: function (User, req, res) {
-//         User.findOne({
-//             email: req.body.email.toLowerCase()
-//         }).then(user => {
-//             console.log(req.body.email);
-//             console.log(user);
-//             if(user){
-//                 let error = [{text: 'Email already registered!'}];
-//                 res.render('users/register', {
-//                     errors: error,
-//                     name: req.body.name,
-//                     title: 'Welcome'
-//                 });
-//             }
-//             else{
-//                 const newUser = new User({
-//                     name: req.body.name,
-//                     email: req.body.email.toLowerCase(),
-//                     password: req.body.password,
-//                     description: req.body.description,
-//                 });
-//                 bcrypt.genSalt(10, (err, salt)=>{
-//                     bcrypt.hash(newUser.password, salt, (err, hash)=>{
-//                         if(err) throw err;
-//                         newUser.password = hash;
-//                         newUser.save()
-//                             .then(user=>{
-//                                 req.flash('success_msg', 'Successfully registered ' + user.email+' and you may now log in!');
-//                                 res.redirect('../');
-//                             }).catch(err=>{
-//                             console.log(err);
-//                             return;
-//                         });
-//                     });
-//                 });
-//             }
-//         });
-//     },
-//
-// };
+const User = mongoose.model("user", UserSchema);
+
+const model = {
+    findUser: function (id) {
+        return new Promise((resolve, reject)=>{
+            User.findOne({_id: id}).then( user => {//include the shared private post later
+                resolve(user);
+            }, (err)=>{
+                reject(err);
+            });
+        });
+    },
+
+};
 
 mongoose.model('users', UserSchema);
-// module.exports = controls;
+module.exports = model;
