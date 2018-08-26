@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var TagSchema = new Schema({
+const TagSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -10,6 +10,6 @@ var TagSchema = new Schema({
         type: Array,
         default: []
     }
-})
+});
 
 mongoose.model('tags', TagSchema);

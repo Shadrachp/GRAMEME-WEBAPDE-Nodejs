@@ -8,6 +8,7 @@ const {ensureAuthenticated} = require('../helpers/auth');
 //Load Schema model 'users'
 require('../models/User');
 const User = mongoose.model('users');
+// const ctrl = require('../models/User');
 
 //User Login
 //router.get('/login', (req, res)=>{
@@ -63,42 +64,43 @@ router.post('/register', (req, res)=>{
             email: req.body.email,
     });}
     else{
+       // ctrl.reg(User, bcrypt, req, res);
         User.findOne({
-        email: req.body.email.toLowerCase()
-    }).then(user => {
-        console.log(req.body.email);
-        console.log(user);
-        if(user){
-           let error = [{text: 'Email already registered!'}];
-           res.render('users/register', {
-               errors: error,
-               name: req.body.name,
-               title: 'Welcome'
-           });
-        }
-        else{
-           const newUser = new User({
-            name: req.body.name,
-            email: req.body.email.toLowerCase(),
-            password: req.body.password,
-            description: req.body.description,
-            }); 
-            bcrypt.genSalt(10, (err, salt)=>{
-            bcrypt.hash(newUser.password, salt, (err, hash)=>{
-                if(err) throw err;
-                newUser.password = hash;
-                newUser.save()
-                .then(user=>{
-                    req.flash('success_msg', 'Successfully registered ' + user.email+' and you may now log in!');
-                    res.redirect('../');
-                }).catch(err=>{
-                    console.log(err);
-                    return;
+            email: req.body.email.toLowerCase()
+        }).then(user => {
+            console.log(req.body.email);
+            console.log(user);
+            if(user){
+                let error = [{text: 'Email already registered!'}];
+                res.render('users/register', {
+                    errors: error,
+                    name: req.body.name,
+                    title: 'Welcome'
                 });
-            });
-          }); 
-        }
-    });   
+            }
+            else{
+                const newUser = new User({
+                    name: req.body.name,
+                    email: req.body.email.toLowerCase(),
+                    password: req.body.password,
+                    description: req.body.description,
+                });
+                bcrypt.genSalt(10, (err, salt)=>{
+                    bcrypt.hash(newUser.password, salt, (err, hash)=>{
+                        if(err) throw err;
+                        newUser.password = hash;
+                        newUser.save()
+                            .then(user=>{
+                                req.flash('success_msg', 'Successfully registered ' + user.email+' and you may now log in!');
+                                res.redirect('../');
+                            }).catch(err=>{
+                            console.log(err);
+                            return;
+                        });
+                    });
+                });
+            }
+        });
     }
 });
 

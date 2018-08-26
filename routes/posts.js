@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const {ensureAuthenticated} = require('../helpers/auth');
-
+const controller = require('../models/Post');
 //Load Schema model 'post'
 require('../models/Post');
 require('../models/User');
@@ -78,7 +78,7 @@ const upload = multer({
 
 //checks filetype of file if its not part of the list then return an error
 function validateType(file, cb){
-    const filetypes = /jpeg|jpg|png|TIFF/; //extensions - allowed filetypes/image format
+    const filetypes = /jpeg|jpg|png|tiff/; //extensions - allowed filetypes/image format
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = filetypes.test(file.mimetype);
     if(mimetype && extname)
@@ -88,15 +88,7 @@ function validateType(file, cb){
 
 //Post index page remember to make profile as index
 router.get('/', ensureAuthenticated, (req, res)=>{
-    Post.find({user: req.user.id})
-    .sort({date:'desc'})
-    .then(posts =>{
-        res.render('posts/index', {
-            posts:posts, profile: true,
-            name: req.user.name,
-            description: req.user.description
-        });
-    })
+    controller.getPosts(Post, req, res);
 });
 
 //Renders the upload page
@@ -106,61 +98,17 @@ router.get('/upload', ensureAuthenticated, (req, res)=>{
 
 //link to view image
 router.get('/image/:filename', (req, res)=>{
-    gfs.files.findOne({filename: req.params.filename}, (err, file)=>{
-        if(!file || file.length === 0){
-            return res.status(404).json({
-                err: 'No Image exists'
-            });
-        }
-        const readstream = gfs.createReadStream(file.filename);
-        readstream.pipe(res);
-    });
+    controller.getImg(gfs, req, res);
 });
 
 //Edit Post
 router.get('/edit/:id', ensureAuthenticated, (req, res)=>{
-    Post.findOne({
-        _id: req.params.id,
-        user: req.user.id
-    })
-    .then(post =>{
-        if(post) {
-                res.render('posts/edit', { //render profile
-                    post: post
-                });
-        }else{
-            req.flash('error_msg', 'Unauthorized access');
-            res.redirect('/posts');
-        }
-    });
+    controller.getEdit(Post, req, res);
 });
 
 //response to req view user profile
 router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
-    const id = req.params.id;
-    User.findOne({_id: id}).then( user => {//include the shared private post later
-        if (user.id === req.user.id) {
-            res.redirect('/posts');
-        } else{
-            Post.find({
-                user: id,
-                private: false
-            })
-                .sort({date: 'desc'})
-                .then(posts => {
-                    let NoResult = false;
-                    if (posts.length > 0)
-                        NoResult = true;
-                    res.render('posts/index', {
-                        posts,
-                        name: user.name,
-                        description: user.description,
-                        profile: true,
-                        NoResult,
-                    });
-                });
-        }
-    });
+    controller.profile(User, Post, req, res);
 });
 
 //Process Form Post req for uploading or post a meme
@@ -176,18 +124,6 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
                 errors.push({text: 'Please add some description'})
         } 
         if(errors.length>0){
-//            if(!err){
-//for local storage uncomment this if we need to switch to local and previous comments connected to this
-//                fs.unlink("./public/uploads/" + req.file.filename, (errr)=>{
-//                    if(errr){
-//                        console.log('Error deleting the uploaded file!')
-//                    }else{
-//                        console.log('File successfully deleted!')
-//                    }
-//                });
-//                console.log("1error: " + err);
-//            }
-            
             res.render('posts/upload',{ //this renders the index Make sure to edit handlebars file for showing the upload modal later (medium priority) /done
                 errors: errors, //edit handlesbars for viewing errors later, remove {{errors}} from main layout then insert {{errors}} for every page or div that needs to display an error (low priority) /done
                 title: req.body.title,
@@ -195,53 +131,7 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             });
             
         }else {
-            var tags = req.body.tags.split(",");
-
-            const newPost = {
-                title: req.body.title,
-                details: req.body.details,
-                user: req.user.id,
-                private: isPrivate(req.body.privacy),
-                name: req.user.name,
-                postImage: req.file.filename,
-                tags: tags,
-                index: req.user.name + ' ' + req.body.title + ' ' + req.body.details + ' ' + req.body.tags
-            };
-//            var i;
-//                for (i = 0; len = tags.length; i++) {
-//                    console.log(tags[i]);
-//                }
-           new Post(newPost).save().then(post=>{
-               req.flash('success_msg', 'Successfully added ' +
-                        post.title + '!');
-               res.redirect('/posts');
-           })
-//            
-//           
-//            var i;
-//            for(i=0;i<tags.length;i++){
-//                console.log(tags[i]);
-//                
-//                Tag.find({name: tags[i]}).then(()=>{
-//                    console.log('cant find')
-//                },(err)=>{
-//                        const newTag ={
-//                            name: tags[i],
-//                            $push: {posts: '123'}
-//                        };
-//                        
-//                        new Tag(newTag).save().then(()=>{
-//                            console.log('success');
-//                        },(err)=>{
-//                            console.log(err);
-//                        })
-//                })
-//                  
-//
-//                }    
-//            }
-
-
+            controller.upload(Post, req ,res);
         }
     });
 });
@@ -250,30 +140,7 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
     let search = req.body.search.trim();
     let profile = true;
     if(search)
-        Post.find({user: req.user.id,
-                   index: {$regex: search, $options: "$i"}})
-            .sort({date:'desc'})
-            .then(posts =>{
-                if(posts.length > 0) {
-                    let msg = ' result';
-                    if(posts.length > 1)
-                        msg = msg + 's';
-
-                    res.render('posts/index', {
-                        posts: posts,
-                        name: req.user.name,
-                        profile,
-                        success_msg: posts.length + msg + " found for '" + search +"'",
-                    });
-                }else{
-                    const error = "No results found for '" + search +"'";
-                    req.flash('error_msg', error);
-                    res.render('posts/index', {
-                        error, profile,
-                        NoResult: true
-                    });
-                }
-            });
+        controller.fSearch(Post, req, res, profile);
     else{
         const error = 'Search field is empty';
         req.flash('error_msg', error);
@@ -282,78 +149,20 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
 });
 
 router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
-    const tag = req.params.tag;
-    let profile = true;
-    Post.find({index: {$regex: tag, $options: "$i"}})
-        .sort({date: 'desc'})
-        .then(posts=>{
-            console.log(posts);
-            if(posts.length > 0) {
-                let msg = ' result';
-                if(posts.length > 1)
-                    msg = msg + 's';
-                res.render('posts/index', {
-                    posts: posts,
-                    name: req.user.name,
-                    profile,
-                    success_msg: posts.length + msg + " found for '" + tag +"'",
-                });
-            }else{
-                const error = "No results found for '" + tag +"'";
-                req.flash('error_msg', error);
-                res.render('posts/index', {
-                    error, profile,
-                    NoResult: true
-                });
-            }
-        });
+    controller.searchTag(Post, req, res);
 });
 //checks if the uploaded post is private or not
-function isPrivate(a){
-//    console.log(a);
-    return a === '1';
-}
+
 
 
 //edit form process (editing data in db)
 router.put('/:id', ensureAuthenticated, (req, res)=>{
-    Post.findOne({
-       _id: req.params.id,
-        user: req.user.id
-    }).then(post => {
-        if(post){
-        post.title = req.body.title;
-        post.details = req.body.details;
-        post.tags = req.body.tags.split(",");
-        post.save()
-            .then(post => {
-                req.flash('success_msg', post.title + ' successfully edited!');
-                res.redirect('/posts')
-            });
-        }else{
-            req.flash('error_msg', 'Error editing meme!');
-            res.redirect('/posts');
-        }
-    });
+    controller.edit(Post, req, res);
 });
 
 //deleting a post
 router.delete('/:id', ensureAuthenticated, (req, res)=>{
-    Post.findOne({_id: req.params.id, user: req.user.id}).then((post)=>{
-        if(post) {
-            gfs.remove({_id: post.postImage}).then(() => {
-                Post.remove({
-                    _id: req.params.id
-                }).then(() => {
-                    req.flash('success_msg', 'Meme successfully deleted!');
-                    res.redirect('/posts');
-                });
-            });
-        }else{
-            req.flash('error_msg', 'Error deleting meme!');
-            res.redirect('/posts');
-        }
-    }); 
+   controller.pDelete(Post, gfs, req, res)
 });
 
 
