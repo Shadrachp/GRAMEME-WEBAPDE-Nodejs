@@ -18,7 +18,7 @@
 ## TODO
 - [ ] Share a meme
 - [ ] AJAX
-- [ ] Controller
+- [x] MVC
 
 ## Dependencies
 - bcryptjs
