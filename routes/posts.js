@@ -231,7 +231,7 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
 
 router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
     const tag = req.params.tag;
-    let profile = true;
+    let profile = false;
     model.searchTag(tag).then(posts=>{
         console.log(posts);
         if(posts.length > 0) {
@@ -240,7 +240,7 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
                 msg = msg + 's';
             res.render('posts/index', {
                 posts: posts,
-                name: req.user.name,
+//                name: req.user.name,
                 profile,
                 success_msg: posts.length + msg + " found for '" + tag +"'",
             });

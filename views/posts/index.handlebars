@@ -1,20 +1,22 @@
-<div class="profile mb-2">
-    <div class="profile-image">
-        <img src="Assets/icon/home.png"><!--change later-->
-    </div>
+{{#if profile}}
+    <div class="profile mb-2">
+        <div class="profile-image">
+            <img src="Assets/icon/home.png"><!--change later-->
+        </div>
 
-    <div class="profile-user">
-        <h1 class="profile-user-name">{{name}}</h1>
-    </div>                        
+        <div class="profile-user">
+            <h1 class="profile-user-name">{{name}}</h1>
+        </div>                        
 
-    <div class="profile-bio">
-        <p>
-            <span class="profile-real-name">
-            </span> 
-            {{description}}
-        </p>
+        <div class="profile-bio">
+            <p>
+                <span class="profile-real-name">
+                </span> 
+                {{description}}
+            </p>
+        </div>
     </div>
-</div>
+{{/if}}
 {{#if posts}}
 <div class="row" id="content-container">
 {{/if}}
