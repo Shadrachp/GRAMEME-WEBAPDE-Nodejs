@@ -14,12 +14,6 @@ const usrModel = require('../models/User');
 require('../models/Post');
 require('../models/User');
 require('../models/Tag');
-const Post = mongoose.model('posts');
-const User = mongoose.model('users');
-const Tag = mongoose.model('tags');
-
-
-//set conn
 
 //Connect gridfs and mongo
 Grid.mongo = mongoose.mongo;
@@ -144,7 +138,7 @@ router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
                     posts,
                     name: user.name,
                     description: user.description,
-                    profile: true,
+                    profile: false,
                     NoResult,
                 });
             });
