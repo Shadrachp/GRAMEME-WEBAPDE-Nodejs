@@ -193,6 +193,7 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
     });
 });
 
+//checks if the uploaded post is private or not
 function isPrivate(a){
 //    console.log(a);
     return a === '1';
@@ -255,11 +256,9 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
         }
     });
 });
-//checks if the uploaded post is private or not
 
 
-
-//edit form process (editing data in db)
+//edit form process
 router.put('/:id', ensureAuthenticated, (req, res)=>{
     model.edit(req.params.id, req.user.id).then(post =>{
         if(post){
@@ -296,6 +295,4 @@ router.delete('/:id', ensureAuthenticated, (req, res)=>{
    });
 });
 
-// const id = req.params.id;
-// uModel.findUser(id).then(user => {});
 module.exports = router;

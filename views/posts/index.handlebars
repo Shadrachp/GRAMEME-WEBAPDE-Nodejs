@@ -57,7 +57,7 @@
             <div class="modal-footer goodies">
                  <div>
                      <a href="/posts/profile/{{user}}">
-                         <i class="far fa-user"><i>&nbsp{{name}}</i></i>
+                         <i class="far fa-user"style="font-size: 20px"><i>&nbsp{{name}}</i></i>
                      </a>
                  </div>
                  <div>
@@ -90,16 +90,19 @@
                         <a href="/posts/edit/{{_id}}" class="btn btn-info btn-block">&nbsp&nbspEdit&nbsp&nbsp</a>
                 </div>
                  </div>
+
                  <div class="modal-footer">
                      <div>
-                         <p class="Logo-bold">MEMESCRIPTION:</p>
-                         <p class="Text-reg">{{details}}</p><br/>
-                         <p class="Logo-bold">TAGS:</p>
+                         <!--<p class="Logo-bold">MEMESCRIPTION:</p>-->
+                         <p class="Text-light" style="font-size: 18px">{{details}}</p><br/>
+                         <!--<p class="Logo-bold">TAGS:</p>-->
+                         <div class="form-check form-check-inline">
                          {{#each tags}}
                              <form action="/posts/tags/{{this}}" method="POST">
-                                 <input type="submit" class="btn btn-primary" value="{{this}}">
+                                 <input type="submit" class="btn btn-primary mr-2" value="{{this}}">
                              </form>
                          {{/each}}
+                         </div>
                      </div>
                  </div>
              </div>
