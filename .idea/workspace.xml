@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8256753e-ca2c-4fc1-a90e-27032253399b" name="Default Changelist" comment="View user's profile and search (buggy if while searching in a user's profile)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/share.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/share.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.handlebars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/_navbar.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/_navbar.handlebars" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/posts/index.handlebars" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/index.handlebars" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -101,7 +96,7 @@
         <counts>
           <entry key="css" value="394" />
           <entry key="handlebars" value="1988" />
-          <entry key="js" value="7305" />
+          <entry key="js" value="7326" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -109,7 +104,7 @@
           <entry key="CSS" value="394" />
           <entry key="HTML" value="3" />
           <entry key="Handlebars/Mustache" value="1988" />
-          <entry key="JavaScript" value="7300" />
+          <entry key="JavaScript" value="7321" />
           <entry key="RegExp" value="2" />
         </counts>
       </usages-collector>
@@ -148,7 +143,7 @@
         <entry file="file://$PROJECT_DIR$/routes/posts.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="557">
-              <caret line="324" column="31" selection-start-line="324" selection-start-column="31" selection-end-line="324" selection-end-column="31" />
+              <caret line="332" column="31" selection-start-line="332" selection-start-column="31" selection-end-line="332" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -165,8 +160,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/share.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="664">
-              <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+            <state relative-caret-position="320">
+              <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
               <folding>
                 <element signature="e#268#275#1" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#a#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -185,11 +180,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/posts/index.handlebars">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="94" column="31" lean-forward="true" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+            <state relative-caret-position="289">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="38" />
               <folding>
-                <element signature="e#447#470#0#HTML" expanded="true" />
-                <element signature="e#483#503#0#HTML" expanded="true" />
+                <element signature="e#661#680#0#HTML" expanded="true" />
                 <element signature="e#5823#5861#0#HTML" expanded="true" />
                 <element signature="e#5878#5901#0#HTML" expanded="true" />
                 <element signature="e#6011#6068#0#HTML" expanded="true" />
@@ -229,8 +223,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>model.profile</find>
-      <find>controls</find>
       <find>const rout</find>
       <find>fin</find>
       <find>px</find>
@@ -259,6 +251,8 @@
       <find>shared</find>
       <find>redirect</find>
       <find>col-md-4</find>
+      <find>i</find>
+      <find>post.id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -387,7 +381,7 @@
       <workItem from="1535256912921" duration="729000" />
       <workItem from="1535259818013" duration="19289000" />
       <workItem from="1535338017068" duration="4900000" />
-      <workItem from="1535376701533" duration="25418000" />
+      <workItem from="1535376701533" duration="26110000" />
     </task>
     <task id="LOCAL-00001" summary="Removed unused variable">
       <created>1533399438533</created>
@@ -456,7 +450,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70991000" />
+    <option name="totallyTimeSpent" value="71683000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1222" extended-state="6" />
@@ -661,7 +655,7 @@
     <entry file="file://$PROJECT_DIR$/routes/posts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
-          <caret line="324" column="31" selection-start-line="324" selection-start-column="31" selection-end-line="324" selection-end-column="31" />
+          <caret line="332" column="31" selection-start-line="332" selection-start-column="31" selection-end-line="332" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -674,11 +668,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/posts/index.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="94" column="31" lean-forward="true" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+        <state relative-caret-position="289">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="38" />
           <folding>
-            <element signature="e#447#470#0#HTML" expanded="true" />
-            <element signature="e#483#503#0#HTML" expanded="true" />
+            <element signature="e#661#680#0#HTML" expanded="true" />
             <element signature="e#5823#5861#0#HTML" expanded="true" />
             <element signature="e#5878#5901#0#HTML" expanded="true" />
             <element signature="e#6011#6068#0#HTML" expanded="true" />
@@ -690,8 +683,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/share.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+        <state relative-caret-position="320">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
           <folding>
             <element signature="e#268#275#1" expanded="true" />
             <element signature="n#style#0;n#i#0;n#a#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />

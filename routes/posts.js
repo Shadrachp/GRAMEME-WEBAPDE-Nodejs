@@ -167,7 +167,11 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             });
             
         }else {
-            const tags = req.body.tags.split(",");
+            var tags = req.body.tags.split(",");
+            if(tags=="") {
+                tags = null
+            }
+  
             const newPost = {
                 title: req.body.title,
                 details: req.body.details,
@@ -227,7 +231,7 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
 
 router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
     const tag = req.params.tag;
-    let profile = true;
+    let profile = false;
     model.searchTag(tag).then(posts=>{
         console.log(posts);
         if(posts.length > 0) {
@@ -236,7 +240,7 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
                 msg = msg + 's';
             res.render('posts/index', {
                 posts: posts,
-                name: req.user.name,
+//                name: req.user.name,
                 profile,
                 success_msg: posts.length + msg + " found for '" + tag +"'",
             });
@@ -255,10 +259,14 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
 //edit form process
 router.put('/:id', ensureAuthenticated, (req, res)=>{
     model.edit(req.params.id, req.user.id).then(post =>{
+        var tags = req.body.tags.split(",");
+            if(tags=="") {
+                tags = null
+            }
         if(post){
             post.title = req.body.title;
             post.details = req.body.details;
-            post.tags = req.body.tags.split(",");
+            post.tags = tags;
             post.index = req.user.name + ' ' + req.body.title + ' ' + req.body.details + ' ' + req.body.tags;
             post.save()
                 .then(post => {
