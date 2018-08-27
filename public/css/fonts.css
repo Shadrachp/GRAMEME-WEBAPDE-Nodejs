@@ -3,6 +3,13 @@
     src: url("../Fonts/timeburnerbold.ttf");
 }
 
+ @font-face {
+     font-family: 'Billabong';
+     font-style: normal;
+     font-weight: normal;
+     src: local('Billabong'), url('../Fonts/Billabong.woff') format('woff');
+ }
+
 .Logo-bold, .goodies div:nth-child(1) i i{
     font-family: "timeburnerbold";
 /*    font-size: 20px;*/
@@ -45,13 +52,6 @@ div.form-group{
     font-family: "timeburnerbold", monospace, sans-serif;
     
 }
-
- @font-face {
-     font-family: 'Billabong';
-     font-style: normal;
-     font-weight: normal;
-     src: local('Billabong'), url('../Fonts/Billabong.woff') format('woff');
- }
 
  i {
      font-style: normal;
