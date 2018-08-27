@@ -69,17 +69,22 @@
                  </div>
                  <div>
                      <div class="dropdown">
-                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"> 
-                             Share
+                         <button img src="../public/Assets/icon/settings.png" class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"> 
+                             SETTINGS
                              <span class="caret"></span>
                          </button>
                          <ul class="dropdown-menu bg-dark text-center" >
-                             <li class="bg-dark"><a href="#" class="btn-dark btn-block">Shad Penano</a></li>
-                             <li><a href="#">Plinky Gamara</a></li>
-                             <li><a href="#">Graciel Nuncio</a></li>
+                             <li class="bg-dark"><a href="#" class="btn-dark btn-block">SHARE</a></li>
+                             <li class="bg-dark">
+                             <form method="post" action="/posts/{{id}}?_method=DELETE">
+                                 <input type="hidden" name="_method" value="DELETE">
+                                 <input class="btn-dark btn-block" type="submit" value="DELETE">
+                             </form>
+                             <li class="bg-dark"><a href="/posts/edit/{{_id}}" class="btn-dark btn-block">EDIT</a></li>
                          </ul>
                      </div>
                  </div>
+<!--
                  <div>
                     <form method="post" action="/posts/{{id}}?_method=DELETE">
                         <input type="hidden" name="_method" value="DELETE">
@@ -89,6 +94,7 @@
                  <div>
                         <a href="/posts/edit/{{_id}}" class="btn btn-info btn-block">&nbsp&nbspEdit&nbsp&nbsp</a>
                 </div>
+-->
                  </div>
 
                  <div class="modal-footer">
