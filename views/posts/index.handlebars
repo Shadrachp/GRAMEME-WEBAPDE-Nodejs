@@ -55,23 +55,20 @@
                      <img class="img-responsive modal-img" src="/posts/image/{{postImage}}">
                 </div>
                 <div class="modal-footer goodies">
-                    <div>
-                     <div class="mr-4">
+                     <div class="mr-2">
                          <a href="/posts/profile/{{user}}">
                              <i class="far fa-user"style="font-size: 20px"><i>&nbsp{{name}}</i></i>
                          </a>
                      </div>
-                     <div style="float:left">
-                         {{#if private}}
-                             <i>private</i>
-                         {{else}}
-                            <i>public</i>
-                         {{/if}}
-                     </div>
-                    </div>
                      <div>
                          <div class="dropdown">
-                             <button id="dropdownBtn" class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                             {{#if private}}
+                                <i class="fas fa-lock"></i>
+                             {{else}}
+                                <i class="fas fa-globe-asia"></i>
+                             {{/if}}
+                             
+                             <button id="dropdownBtn" class="btn btn-info dropdown-toggle ml-2" type="button" data-toggle="dropdown">
                              <span class="caret"></span>
                              </button>
                              <ul class="dropdown-menu bg-dark text-center" >
