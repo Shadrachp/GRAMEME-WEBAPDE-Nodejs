@@ -41,17 +41,20 @@
     color: #3c4045;
 }
 
+/*
 
 #shareBtn, #editBtn, .btn-del{
     width: 80px;
     margin: 0px;
-    background-color: grey;
+    background-color: #282c31;
     color: white;
     display: block;
 }
+*/
 
 #dropdownBtn{
     background-color: grey;
+    border-color: grey;
     color: white;
 }
 
