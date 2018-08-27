@@ -15,12 +15,24 @@
         </p>
     </div>
 </div>
+<hr/>
+<label class="Text-reg" style="font-size: 18px">Filter: </label>
+<div id="category"  class="btn-group btn-group-toggle" data-toggle="buttons" style="float:right">
+        <label class="btn btn-secondary active" id="myPosts">
+            <input type="radio" name="options" autocomplete="off" checked> My Memes
+        </label>
+        <label class="btn btn-secondary" id="sharedpost">
+            <input type="radio" name="options" autocomplete="off"> Shared Memes
+        </label>
+</div>
+<hr/>
+
 {{#if posts}}
 <div class="row" id="content-container">
 {{/if}}
 {{#each posts}}
 
-<div class="col-md-4 mb-2">
+<div class="dummy col-md-4 mb-2">
     <div class="thumbnail img-responsive">
         <a href="" data-toggle="modal" data-target="#a{{_id}}">
         <img src="/posts/image/{{postImage}}">
@@ -67,42 +79,27 @@
                              {{else}}
                                 <i class="fas fa-globe-asia"></i>
                              {{/if}}
-                             
+
                              <button id="dropdownBtn" class="btn btn-info dropdown-toggle ml-2" type="button" data-toggle="dropdown">
                              <span class="caret"></span>
                              </button>
                              <ul class="dropdown-menu bg-dark text-center" >
-                                 <label id="share" class="btn btn-dark btn-block">SHARE</label>
-                                 <!--<li class="bg-dark">-->
+                                 <label id="share" class="btn btn-dark btn-block" data-toggle="modal" data-target="#z{{_id}}">
+                                     SHARE
+                                 </label>
                                  <form method="post" action="/posts/{{id}}?_method=DELETE">
                                      <input type="hidden" name="_method" value="DELETE">
                                      <input class="btn btn-dark btn-block" style="border-width: 0px" type="submit" value="DELETE">
                                  </form>
-                                 <!--</li>-->
-                                 <!--<li class="bg-dark">-->
                                      <a href="/posts/edit/{{_id}}" class="btn btn-dark btn-block">EDIT</a>
-                                 <!--</li>-->
                              </ul>
                          </div>
                      </div>
-    <!--
-                     <div>
-                        <form method="post" action="/posts/{{!id}}?_method=DELETE">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input class="btn btn-info" type="submit" value="Delete">
-                        </form>
-                     </div>
-                     <div>
-                            <a href="/posts/edit/{{!_id}}" class="btn btn-info btn-block">&nbsp&nbspEdit&nbsp&nbsp</a>
-                    </div>
-    -->
                      </div>
 
                      <div class="modal-footer">
                          <div class="ml-2">
-                             <!--<p class="Logo-bold">MEMESCRIPTION:</p>-->
                              <p class="Text-light" style="font-size: 18px">{{details}}</p><br/>
-                             <!--<p class="Logo-bold">TAGS:</p>-->
                              <div class="form-check form-check-inline">
                              {{#each tags}}
                                  <form action="/posts/tags/{{this}}" method="POST">
@@ -114,6 +111,29 @@
                      </div>
                  </div>
         </div>
+    </div>
+
+    <div class="modal fade sharemod" id="z{{_id}}" role="dialog">
+        <div class="modal-dialog share-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="panel-heading text-center Logo-bold"  style="height: 10px;">
+                         <label style="font-size: 20px">Share your meme</label>
+                    </div>
+                      <button type="button" class="close" style="color:#ed6161" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body bg-dark share-body" style="height: 100px">
+                    <form class="form-inline" id="shared" method="post" action="/">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="inputName"  class="sr-only Text-light">Enter name</label>
+                            <input type="text" name="pangalan" class="form-control" id="inputName" placeholder="Enter email">
+                            <input type="hidden" name="postid" value="{{id}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Share</button>
+                    </form>
+                </div>
+                </div>
+            </div>
     </div>
     {{/each}}
 {{else}}
@@ -141,18 +161,6 @@
                                 <i>public</i>
                             {{/if}}
                         </div>
-
-                        <!--
-                     <div>
-                        <form method="post" action="/posts/{{!id}}?_method=DELETE">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input class="btn btn-info" type="submit" value="Delete">
-                        </form>
-                     </div>
-                     <div>
-                            <a href="/posts/edit/{{!_id}}" class="btn btn-info btn-block">&nbsp&nbspEdit&nbsp&nbsp</a>
-                    </div>
-    -->
                     </div>
 
                     <div class="modal-footer">

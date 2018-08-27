@@ -222,6 +222,28 @@ const model = {
                 }
             });
         });
+    },
+
+    findPost: function(postid){
+        return new Promise((resolve, reject)=>{
+            Post.findOne({_id: postid}).then(post=>{
+                resolve(post);
+            }, (err)=>{
+                reject(err);
+            })
+        })
+    },
+
+    findShared: function(id){
+        return new Promise((resolve, reject)=>{
+            Post.find({shared: id})
+                .sort({date: 'desc'})
+                .then(posts=>{
+                resolve(posts);
+            }, (err)=>{
+                reject(err);
+            });
+        })
     }
 };
 

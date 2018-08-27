@@ -289,4 +289,41 @@ router.delete('/:id', ensureAuthenticated, (req, res)=>{
    });
 });
 
+//router post
+router.post('/share', ensureAuthenticated, (req, res)=>{
+    usrModel.findName(req.body.pangalan).then(user=>{
+        if(user && user.id !== req.user.id) {
+            model.findPost(req.body.postid).then(post => {
+                if(post.shared.indexOf(user.id) <= -1) {
+                    post.shared.push(user.id);
+                    post.save();
+                    res.send(post);
+                }else{
+                    res.send("User already added to list");
+                }
+            }, (err) => {
+                res.send(err);
+            });
+        }else if(user && req.user.id === user.id){//ugghhhhhhhh bakit ayaw
+            res.send("Don't be a loner, share it to other people!");
+        }else res.send("No user found!");
+    });
+});
+
+router.get('/shared', ensureAuthenticated, (req, res)=>{
+    model.findShared(req.user.id).then(posts=>{
+       res.send(posts);
+    }, (err)=>{
+        res.redirect('/posts');
+    });
+});
+
+router.get('/myposts', ensureAuthenticated, (req, res)=>{
+    model.getPosts(req.user.id).then(posts =>{
+        res.send(posts);
+    }, (err)=>{
+        res.redirect('/posts');
+    });
+});
+
 module.exports = router;

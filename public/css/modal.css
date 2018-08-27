@@ -69,3 +69,33 @@
     background-color: dimgray;
     border-color: dimgray;
 }
+
+.share-modal{
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.share-body{
+    height: 300px;
+    width: 450px;
+}
+
+.sharemod {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .sharemod:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.share-modal {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}

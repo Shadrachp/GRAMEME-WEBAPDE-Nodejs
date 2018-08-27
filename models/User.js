@@ -42,6 +42,15 @@ const model = {
             });
         });
     },
+    findName: function (name) {
+        return new Promise((resolve, reject)=>{
+            User.findOne({name: name}).then( user => {//include the shared private post later
+                resolve(user);
+            }, (err)=>{
+                reject(err);
+            });
+        });
+    },
 
 };
 
