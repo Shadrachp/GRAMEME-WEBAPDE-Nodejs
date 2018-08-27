@@ -56,3 +56,8 @@ div.form-group{
  i {
      font-style: normal;
  }
+
+.aboutFeatures, .aboutDependencies, #about, #dependencies, #features{
+    font-family: "timeburnerbold", monospace, sans-serif;
+
+}
