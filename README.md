@@ -17,6 +17,7 @@
 
 ## TODO
 - [ ] Share a meme
+- [ ] Limit content to 15 per query
 - [ ] AJAX
 - [x] MVC
 
