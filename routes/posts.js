@@ -259,10 +259,14 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
 //edit form process
 router.put('/:id', ensureAuthenticated, (req, res)=>{
     model.edit(req.params.id, req.user.id).then(post =>{
+        var tags = req.body.tags.split(",");
+            if(tags=="") {
+                tags = null
+            }
         if(post){
             post.title = req.body.title;
             post.details = req.body.details;
-            post.tags = req.body.tags.split(",");
+            post.tags = tags;
             post.index = req.user.name + ' ' + req.body.title + ' ' + req.body.details + ' ' + req.body.tags;
             post.save()
                 .then(post => {
