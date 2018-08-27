@@ -167,7 +167,11 @@ router.post('/upload', ensureAuthenticated, (req, res)=>{
             });
             
         }else {
-            const tags = req.body.tags.split(",");
+            var tags = req.body.tags.split(",");
+            if(tags=="") {
+                tags = null
+            }
+  
             const newPost = {
                 title: req.body.title,
                 details: req.body.details,
