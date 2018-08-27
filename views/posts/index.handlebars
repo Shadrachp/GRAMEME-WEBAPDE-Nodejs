@@ -60,15 +60,15 @@
                              <i class="far fa-user"style="font-size: 20px"><i>&nbsp{{name}}</i></i>
                          </a>
                      </div>
-                     <div>
-                         {{#if private}}
-                             <i>private</i>
-                         {{else}}
-                            <i>public</i>
-                         {{/if}}
-                     </div>
+
                      <div>
                          <div class="dropdown">
+                             {{#if private}}
+                                <i class="fas fa-lock"></i>
+                             {{else}}
+                                <i class="fas fa-globe-asia"></i>
+                             {{/if}}
+                             
                              <button id="dropdownBtn" class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
                              <span class="caret"></span>
                              </button>
