@@ -5,12 +5,19 @@
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    
                       
                      <form id="search-form" class="form-inline my-2 my-lg-0 ml-auto" action="{{#if profile}}/posts/search{{else}}/search{{/if}}" method="POST">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search for memes" aria-label="Search" id="nav-search" name="search"
                         value="{{search}}">
                         <i id="search-submit" onclick="searchFilter" class="fa fa-search"></i>
                     </form> 
+                      
+                     <li class="nav navbar-nav navbar-right">
+                        <a class="nav-link" href="/about">
+                            About </a>
+                    </li>
+                      
                     <ul class="nav navbar-nav navbar-right" id="nav-acc">
                 {{#if user}}
                     <li class="nav-item">
