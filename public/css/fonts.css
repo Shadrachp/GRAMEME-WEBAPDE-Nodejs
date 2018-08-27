@@ -46,3 +46,17 @@
 main p{
     font-family: "BebasNeue-Regular", monospace, sans-serif;
 }
+
+.text-center{
+    font-family: "BebasNeue-Regular", monospace, sans-serif;
+}
+
+div.form-group{
+    font-family: "BebasNeue-Regular", monospace, sans-serif;
+    
+}
+
+#regBtn{
+    font-family: "BebasNeue-Regular", monospace, sans-serif;
+    
+}
