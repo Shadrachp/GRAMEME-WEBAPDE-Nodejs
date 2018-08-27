@@ -55,3 +55,12 @@
     color: white;
 }
 
+.btn-primary{
+    background-color: gray;
+    border-color: gray;
+}
+
+.btn-primary:hover{
+    background-color: dimgray;
+    border-color: dimgray;
+}

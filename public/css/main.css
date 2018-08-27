@@ -1,7 +1,8 @@
 body, main, html{
     min-height: 100%;
 /*    height: */
-    background-color: #282c31;
+/*    background-color: #282c31;*/
+    background-color: #F0F0F0;
 }
 
 main{
@@ -11,8 +12,12 @@ main{
 #logo {
     color: white;
     font-weight:normal;
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-left: 10px;
+}
+
+#logo:hover{
+    text-decoration: none;
 }
 
 #search-submit{
@@ -106,11 +111,13 @@ main img{
     padding-right: 6px;
 }
 
+/*
 .thumbnail, .modal-img{
     -webkit-box-shadow: 1px 1px 13px 0px rgba(36,36,36,1);
     -moz-box-shadow: 1px 1px 13px 0px rgba(36,36,36,1);
     box-shadow: 1px 1px 13px 0px rgba(36,36,36,1);
 }
+*/
 
 .goodies div:nth-child(2){
     text-align: right;
@@ -167,7 +174,7 @@ main img{
 
 .profile-image img {
 	border-radius: 50%;
-    background-color: white;
+/*    background-color: white;*/
     height: 200px;
 	width: 100%;
 }
@@ -182,7 +189,7 @@ main img{
     font-size: 12pt;
     font-size: 3.2rem;
 	font-weight: 300;
-    color: white;
+/*    color: white;*/
 }
 
 .profile-edit-btn {
@@ -206,7 +213,7 @@ main img{
 	font-weight: 400;
 	line-height: 1.5;
 	margin-top: 1.3rem;
-    color: white;
+/*    color: white;*/
 }
 
 .profile-real-name,
@@ -214,26 +221,6 @@ main img{
 	font-weight: 600;
 }
 
-#upload-photo{
-    width: 710px;
-    overflow: hidden;
-    background: #FFF;
-    border: 1px solid #E4E4E4;
-    border-radius: 5px;
-}
-
-#upload-photo > div > label
-{
-  display: block;
-  padding: 10px 20px 10px;
-  vertical-align: top;
-  font-family: Source Sans Pro, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #939393;
-  cursor: pointer;
-}
 
 #title{
     width: 300px;
