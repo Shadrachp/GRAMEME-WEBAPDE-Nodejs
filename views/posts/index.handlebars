@@ -55,31 +55,36 @@
                      <img class="img-responsive modal-img" src="/posts/image/{{postImage}}">
                 </div>
                 <div class="modal-footer goodies">
-                     <div>
+                    <div>
+                     <div class="mr-4">
                          <a href="/posts/profile/{{user}}">
                              <i class="far fa-user"style="font-size: 20px"><i>&nbsp{{name}}</i></i>
                          </a>
                      </div>
-                     <div>
+                     <div style="float:left">
                          {{#if private}}
                              <i>private</i>
                          {{else}}
                             <i>public</i>
                          {{/if}}
                      </div>
+                    </div>
                      <div>
                          <div class="dropdown">
                              <button id="dropdownBtn" class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
                              <span class="caret"></span>
                              </button>
                              <ul class="dropdown-menu bg-dark text-center" >
-                                 <li class="bg-dark"><a href="#" class="btn-dark btn-block">SHARE</a></li>
-                                 <li class="bg-dark">
+                                 <label id="share" class="btn btn-dark btn-block">SHARE</label>
+                                 <!--<li class="bg-dark">-->
                                  <form method="post" action="/posts/{{id}}?_method=DELETE">
                                      <input type="hidden" name="_method" value="DELETE">
-                                     <input class="btn-dark btn-block" type="submit" value="DELETE">
+                                     <input class="btn btn-dark btn-block" style="border-width: 0px" type="submit" value="DELETE">
                                  </form>
-                                 <li class="bg-dark"><a href="/posts/edit/{{_id}}" class="btn-dark btn-block">EDIT</a></li>
+                                 <!--</li>-->
+                                 <!--<li class="bg-dark">-->
+                                     <a href="/posts/edit/{{_id}}" class="btn btn-dark btn-block">EDIT</a>
+                                 <!--</li>-->
                              </ul>
                          </div>
                      </div>
@@ -97,7 +102,7 @@
                      </div>
 
                      <div class="modal-footer">
-                         <div>
+                         <div class="ml-2">
                              <!--<p class="Logo-bold">MEMESCRIPTION:</p>-->
                              <p class="Text-light" style="font-size: 18px">{{details}}</p><br/>
                              <!--<p class="Logo-bold">TAGS:</p>-->
