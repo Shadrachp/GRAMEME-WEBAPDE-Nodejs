@@ -1,10 +1,12 @@
 $(document).ready(()=>{
-    $('#shared').on("submit",function  (e) {
-        e.preventDefault();
-        $.post("posts/share",$(this).serialize(), function( data ) {
-            console.log(data);
-        });
+    // $('#uniqueid').submit('false');
+    $('#uniqueid').on("submit",function  (event) {
+            event.preventDefault();
+            $.post("posts/share",$(this).serialize(), function( data ) {
+                console.log(data);
+            });
     });
+
 
     $('#sharedpost').click(()=>{
         // console.log("clicked")
