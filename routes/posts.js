@@ -139,6 +139,7 @@ router.get('/profile/:id', ensureAuthenticated, (req, res)=>{
                     name: user.name,
                     description: user.description,
                     profile: false,
+                    tags: false,
                     NoResult,
                 });
             });
@@ -211,6 +212,7 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
                     posts: posts,
                     name: req.user.name,
                     profile,
+                    tags: true,
                     success_msg: posts.length + msg + " found for '" + search + "'",
                 });
             } else {
@@ -242,6 +244,7 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
                 posts: posts,
 //                name: req.user.name,
                 profile,
+                tags: true,
                 success_msg: posts.length + msg + " found for '" + tag +"'",
             });
         }else{

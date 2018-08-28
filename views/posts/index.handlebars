@@ -1,4 +1,4 @@
-
+{{#unless tags}}
     <div class="profile mb-2">
         <div class="profile-image">
             <img src="Assets/icon/dp.png"><!--change later-->
@@ -16,18 +16,20 @@
             </p>
         </div>
     </div>
-<hr/>
-<label class="Text-reg" style="font-size: 18px">Filter: </label>
-<div id="category"  class="btn-group btn-group-toggle" data-toggle="buttons" style="float:right">
-        <label class="btn btn-secondary active" id="myPosts">
-            <input type="radio" name="options" autocomplete="off" checked> My Memes
-        </label>
-        <label class="btn btn-secondary" id="sharedpost">
-            <input type="radio" name="options" autocomplete="off"> Shared Memes
-        </label>
-</div>
-<hr/>
-
+{{#if tags}}
+    <hr/>
+        <label class="Text-reg" style="font-size: 18px">Filter: </label>
+        <div id="category"  class="btn-group btn-group-toggle" data-toggle="buttons" style="float:right">
+                <label class="btn btn-secondary active" id="myPosts">
+                    <input type="radio" name="options" autocomplete="off" checked> My Memes
+                </label>
+                <label class="btn btn-secondary" id="sharedpost">
+                    <input type="radio" name="options" autocomplete="off"> Shared Memes
+                </label>
+        </div>
+    <hr/>
+{{/if}}
+{{/unless}}
 {{#if posts}}
 <div class="row" id="content-container">
 {{/if}}
