@@ -12,6 +12,7 @@ $(document).ready(()=>{
         // console.log("clicked")
         $.get("posts/shared", $(this).serialize(), function( data ) {
             console.log(data);
+            $(".jumbotron").remove();
             $(".dummy").remove();
             $(".modal").remove();
             for (let i = 0; i < data.length; i++) {
