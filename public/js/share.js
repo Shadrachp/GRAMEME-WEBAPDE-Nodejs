@@ -12,6 +12,11 @@ $(document).ready(()=>{
         // console.log("clicked")
         $.get("posts/shared", $(this).serialize(), function( data ) {
             console.log(data);
+            if($('#content-container') === null){
+                 const str = '<div class="row" id="content-container"></div>';
+                 $('#content-div').append(str);
+            }
+                
             $(".jumbotron").remove();
             $(".dummy").remove();
             $(".modal").remove();
