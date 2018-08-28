@@ -208,7 +208,7 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
                 if (posts.length > 1)
                     msg = msg + 's';
 
-                res.render('posts/index', {
+                res.render('index', {
                     posts: posts,
                     name: req.user.name,
                     profile,
@@ -218,7 +218,7 @@ router.post('/search', ensureAuthenticated, (req, res)=>{
             } else {
                 const error = "No results found for '" + search + "'";
                 req.flash('error_msg', error);
-                res.render('posts/index', {
+                res.render('index', {
                     error, profile,
                     NoResult: true
                 });
@@ -240,7 +240,7 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
             let msg = ' result';
             if(posts.length > 1)
                 msg = msg + 's';
-            res.render('posts/index', {
+            res.render('index', {
                 posts: posts,
 //                name: req.user.name,
                 profile,
@@ -250,7 +250,7 @@ router.post('/tags/:tag', ensureAuthenticated, (req, res)=>{
         }else{
             const error = "No results found for '" + tag +"'";
             req.flash('error_msg', error);
-            res.render('posts/index', {
+            res.render('index', {
                 error, profile,
                 NoResult: true
             });
