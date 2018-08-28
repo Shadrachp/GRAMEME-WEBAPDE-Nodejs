@@ -99,3 +99,17 @@
     text-align: left;
     vertical-align: middle;
 }
+
+#thumbs{
+    padding: 10px;
+    font-size: 1.5rem;
+    background-color: #282c31;
+    border-color: #282c31;
+    color: white;
+}
+
+#like{
+    background-color: #282c31;
+    border-color: #282c31;
+    color: white;
+}
