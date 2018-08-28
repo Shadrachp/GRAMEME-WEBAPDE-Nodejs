@@ -9,37 +9,52 @@ $(document).ready(()=>{
 
 
     $('#sharedpost').click(()=>{
-        // console.log("clicked")
+        const str = insertContentContainer();
         $.get("posts/shared", $(this).serialize(), function( data ) {
             console.log(data);
-            if($('#content-container') === null){
-                 const str = '<div class="row" id="content-container"></div>';
-                 $('#content-div').append(str);
-            }
-                
-            $(".jumbotron").remove();
-            $(".dummy").remove();
-            $(".modal").remove();
-            for (let i = 0; i < data.length; i++) {
-                createPost(data[i]);
-                createContentModal(data[i], false);
-                createShareModal(data[i].id);
-            }
+            if(data.length !== 0) {
+                $(".dummy").remove();
+                $(".jumbotron").remove();
+                $(".modal").remove();
+                for (let i = 0; i < data.length; i++) {
+                    createPost(data[i]);
+                    createContentModal(data[i], false);
+                    createShareModal(data[i].id);
+                }
+            } else insertJumbotron();
         });
     });
 
     $('#myPosts').click(()=>{
+        insertContentContainer();
         $.get("posts/myposts", $(this).serialize(), function( data ) {
-            console.log(data);
-            $(".dummy").remove();
-            $(".modal").remove();
-            for (let i = 0; i < data.length; i++) {
-                createPost(data[i]);
-                createContentModal(data[i], true);
-                createShareModal(data[i]._id);
-            }
+            if (data.length !== 0) {
+                $(".jumbotron").remove();
+                $(".modal").remove();
+                for (let i = 0; i < data.length; i++) {
+                    createPost(data[i]);
+                    createContentModal(data[i], true);
+                    createShareModal(data[i]._id);
+                }
+            }else insertJumbotron();
         });
     });
+
+    function insertContentContainer(){
+        $("#content-container").remove();
+        const str = '<div class="row" id="content-container"></div>';
+        $('#content-div').append(str);
+        return str;
+    }
+    function insertJumbotron(){
+        const str2 = '<div class="jumbotron text-center">'+
+            '<h1 class="display-3">Start Uploading Memes!</h1>'+
+            '<p class="lead">Fill your profile full of memes</p>'+
+            '<a class="btn btn-dark btn-lg" href="/posts/upload">Upload a Meme</a></div>';
+        $('#content-div').append(str2);
+    }
+
+
 
     function createPost(post){
         const str = '<div class="dummy col-md-4 mb-2"' +
