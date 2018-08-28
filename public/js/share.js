@@ -1,7 +1,7 @@
 $(document).ready(()=>{
     // $('#uniqueid').submit('false');
-    $('#uniqueid').on("submit",function  (event) {
-            event.preventDefault();
+    $(".formshare").on("submit",function  (e) {
+        e.preventDefault();
             $.post("posts/share",$(this).serialize(), function( data ) {
                 console.log(data);
             });
