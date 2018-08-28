@@ -1,9 +1,17 @@
-$(document).ready(()=>{
+$(document).ready((req, res)=>{
     // $('#uniqueid').submit('false');
-    $(".formshare").on("submit",function  (e) {
+    $(".formshare").on("submit",function(e) {
         e.preventDefault();
-            $.post("posts/share",$(this).serialize(), function( data ) {
+            $.post("posts/share",$(this).serialize(), function(data) {
                 console.log(data);
+            //     req.flash('success_msg', data);
+             //    res.redirect('/posts');
+                const str = '<div class="alert alert-success">' + data + '</div>';
+                $('#content-div').prepend(str);
+                setTimeout(()=>{
+                    $('.alert').remove();
+                }, 3000);
+              
             });
     });
 
