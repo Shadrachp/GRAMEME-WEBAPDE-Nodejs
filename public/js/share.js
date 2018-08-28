@@ -1,4 +1,4 @@
-$(document).ready((req, res)=>{
+$(document).ready(()=>{
     // $('#uniqueid').submit('false');
     $(".formshare").on("submit",function(e) {
         e.preventDefault();
@@ -10,7 +10,7 @@ $(document).ready((req, res)=>{
                 $('#content-div').prepend(str);
                 setTimeout(()=>{
                     $('.alert').remove();
-                }, 3000);
+                }, 5000);
               
             });
     });
